@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building - Bagley Vision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rosario:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Rosario', sans-serif;
+            background-color: #737F69;
+            color: #E8DCC8;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 48px 28px;
+            transition: background 0.3s ease, padding 0.4s ease;
+        }
+
+        nav.scrolled {
+            background-color: rgba(115, 127, 105, 0.95);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            padding: 12px 48px 14px;
+        }
+
+        .logo {
+            display: block;
+            text-decoration: none;
+            line-height: 0;
+        }
+        .logo img {
+            height: 140px;
+            width: auto;
+            transition: height 0.4s ease;
+        }
+
+        nav.scrolled .logo img {
+            height: 70px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .nav-links a {
+            color: #E8DCC8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #BB846F;
+        }
+
+        .nav-links .divider {
+            width: 1px;
+            height: 1rem;
+            background-color: #E8DCC8;
+            opacity: 0.3;
+            margin: 0 1rem;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background-color: #E8DCC8;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 3rem;
+            background-color: #5a6652;
+            border: 1px solid #E8DCC8;
+            border-top: none;
+            min-width: 200px;
+            display: none;
+            flex-direction: column;
+            gap: 0;
+            margin-top: 0;
+        }
+
+        .dropdown-menu.active {
+            display: flex;
+        }
+
+        .dropdown-menu a {
+            color: #E8DCC8;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(232, 220, 200, 0.1);
+            transition: background-color 0.2s ease, color 0.2s ease;
+            font-size: 0.95rem;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: rgba(187, 132, 111, 0.15);
+            color: #BB846F;
+        }
+
+        .dropdown-menu .divider {
+            height: 1px;
+            background-color: #E8DCC8;
+            opacity: 0.3;
+            margin: 0.5rem 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            background: #737F69;
+            overflow: hidden;
+            padding-top: 160px;
+        }
+
+        .hero-image {
+            width: 82%;
+            height: 85vh;
+            background: linear-gradient(135deg, #687560 0%, #5d6a56 50%, #525e4c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            font-size: 1.2rem;
+            color: #E8DCC8;
+            opacity: 0.7;
+        }
+
+        .hero-text {
+            position: absolute;
+            right: 60px;
+            top: 220px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-family: 'Rosario', sans-serif;
+            font-size: 7rem;
+            font-weight: 300;
+            color: #E8DCC8;
+            opacity: 0.25;
+            line-height: 1;
+            letter-spacing: 4px;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Main Content */
+        .content-section {
+            padding: 6rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Rosario', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+        }
+
+        .section-text {
+            font-size: 1.1rem;
+            color: #E8DCC8;
+            line-height: 1.8;
+            max-width: 800px;
+            margin-bottom: 4rem;
+            opacity: 0.9;
+        }
+
+        /* Detail Blocks */
+        .detail-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 6rem;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .detail-block.fade-in {
+            opacity: 1;
+        }
+
+        .detail-block.reverse {
+            direction: rtl;
+        }
+
+        .detail-block.reverse > * {
+            direction: ltr;
+        }
+
+        .detail-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #687560 0%, #5d6a56 50%, #525e4c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #E8DCC8;
+            opacity: 0.6;
+            border: 1px solid rgba(232, 220, 200, 0.1);
+        }
+
+        .detail-text h3 {
+            font-family: 'Rosario', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .detail-text p {
+            font-size: 1rem;
+            color: #E8DCC8;
+            line-height: 1.8;
+            opacity: 0.85;
+        }
+
+        /* Footer */
+        footer { position: relative; padding: 0; overflow: hidden; }
+        .footer-bottom { background: #4a5543; padding: 60px 48px 40px; border-top: 1px solid rgba(232, 220, 200, 0.08); }
+        .footer-name { font-family: 'Rosario', sans-serif; font-weight: 400; margin-bottom: 40px; }
+        .footer-name .the { display: block; font-size: 1.2rem; letter-spacing: 6px; text-transform: uppercase; color: #BB846F; margin-bottom: 4px; }
+        .footer-name .main-name { font-size: clamp(3rem, 8vw, 7rem); color: #BB846F; letter-spacing: 2px; text-transform: uppercase; line-height: 1; }
+        .footer-info { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 32px; flex-wrap: wrap; gap: 24px; }
+        .footer-left p { font-family: 'Rosario', sans-serif; font-size: 0.85rem; color: #E8DCC8; opacity: 0.6; line-height: 1.8; }
+        .footer-left a { color: #E8DCC8; text-decoration: none; }
+        .footer-left a:hover { text-decoration: underline; }
+        .footer-right { display: flex; gap: 32px; }
+        .footer-right a { font-family: 'Rosario', sans-serif; font-size: 0.85rem; color: #E8DCC8; opacity: 0.6; text-decoration: none; transition: opacity 0.3s; }
+        .footer-right a:hover { opacity: 1; }
+        .footer-copyright { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(232, 220, 200, 0.08); }
+        .footer-copyright p { font-family: 'Rosario', sans-serif; font-size: 0.75rem; color: #E8DCC8; opacity: 0.35; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 24px 20px;
+            }
+
+            nav.scrolled .logo img {
+                height: 55px;
+            }
+
+            nav.scrolled {
+                padding: 10px 24px 12px;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .nav-right {
+                gap: 1rem;
+            }
+
+            .dropdown-menu {
+                right: 1.5rem;
+            }
+
+            .hero {
+                min-height: 70vh;
+            }
+
+            .hero-image {
+                width: 90%;
+            }
+
+            .hero-text {
+                font-size: 3.5rem;
+                right: 16px;
+                top: 70px;
+            }
+
+            .content-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .detail-block {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                margin-bottom: 4rem;
+            }
+
+            .detail-block.reverse {
+                direction: ltr;
+            }
+
+            .detail-image {
+                height: 250px;
+            }
+
+            .detail-text h3 {
+                font-size: 1.5rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-links {
+                align-items: flex-start;
+            }
+
+            .footer-copyright {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="nav">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="Bagley Vision Lofts">
+        </a>
+        <div class="nav-right">
+            <div class="nav-links" id="navLinks">
+                <a href="availability.html">Availability</a>
+                <a href="inquire.html">Inquire</a>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="dropdown-menu" id="dropdownMenu">
+                <a href="building.html">Building</a>
+                <a href="residences.html">Lofts</a>
+                <a href="urban-oasis.html">Urban Oasis</a>
+                <a href="neighborhood.html">Neighborhood</a>
+                <a href="availability.html">Availability</a>
+                <div class="divider"></div>
+                <a href="gallery.html">Gallery</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-image">
+            Building Hero Image
+        </div>
+        <div class="hero-text">Building</div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <h1 class="section-title">Building</h1>
+        <p class="section-text">
+            Bagley Vision reintroduces a century-old building with a renewed sense of purpose. Historic character has been carefully preserved and reimagined through a modern lens, where original craftsmanship meets contemporary design. The result is a space that honors its past while confidently stepping into its next chapter.
+        </p>
+    </section>
+
+    <!-- Detail Blocks -->
+    <section class="content-section">
+        <div class="detail-block">
+            <div class="detail-image">
+                Preserving History Image
+            </div>
+            <div class="detail-text">
+                <h3>Preserving History</h3>
+                <p>Bagley Vision has preserved the building's authentic character. Tall, exposed ceilings and large timber beams throughout showcase the building's history. These historic elements create a distinctive backdrop for contemporary living and commerce, providing character and permanence in Detroit's rapidly changing urban landscape.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="detail-block reverse">
+            <div class="detail-image">
+                Modern Amenities Image
+            </div>
+            <div class="detail-text">
+                <h3>Modern Living Integrated</h3>
+                <p>Contemporary amenities seamlessly integrate with historic architecture. Premium fixtures and furnishings, Energy Star appliances, and in-unit laundry enhance both comfort and functionality. The thoughtful renovation honors the past while delivering all the conveniences expected in modern luxury residential living.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="detail-block">
+            <div class="detail-image">
+                Community Connection Image
+            </div>
+            <div class="detail-text">
+                <h3>Community Cornerstone</h3>
+                <p>Bagley Vision occupies a pivotal location at the intersection of Detroit's artistic heritage and its vibrant future. The building is a home, a gathering place, and a fixture of the community that respects its neighborhood roots while embracing new possibilities. Residents and commercial tenants become part of a living story, contributing to an evolving cultural landscape.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom">
+            <div class="footer-name">
+                <span class="the">Bagley Vision</span>
+                <span class="main-name">Lofts</span>
+            </div>
+            <div class="footer-info">
+                <div class="footer-left">
+                    <p>2150 Bagley Street, Detroit, MI 48216</p>
+                    <p><a href="mailto:info@bagleyvision.com">info@bagleyvision.com</a> | For leasing inquiries, <a href="inquire.html">click here</a></p>
+                    <p style="margin-top: 8px;"><a href="#">@bagleyvision</a></p>
+                </div>
+                <div class="footer-right">
+                    <a href="#">Fair Housing Notice</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2026, Bagley Vision Lofts. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            dropdownMenu.classList.toggle('active');
+        });
+
+        // Close dropdown when a link is clicked
+        const dropdownLinks = dropdownMenu.querySelectorAll('a');
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                dropdownMenu.classList.remove('active');
+            });
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-right')) {
+                hamburger.classList.remove('active');
+                dropdownMenu.classList.remove('active');
+            }
+        });
+
+        // Navigation scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Fade-in animations with IntersectionObserver
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe detail blocks
+        const detailBlocks = document.querySelectorAll('.detail-block');
+        detailBlocks.forEach(block => {
+            observer.observe(block);
+        });
+    </script>
+</body>
+</html>                         

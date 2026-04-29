@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Bagley Vision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rosario:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brown: #99795F;
+            --sage: #737F69;
+            --terracotta: #BB846F;
+            --cream: #E8DCC8;
+            --black: #0f0f0f;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Rosario', sans-serif;
+            background-color: #737F69;
+            color: var(--cream);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 48px 28px;
+            background-color: #737F69;
+            z-index: 1000;
+            transition: background 0.3s ease, padding 0.4s ease;
+            border-bottom: 1px solid rgba(232, 220, 200, 0.1);
+        }
+
+        nav.scrolled {
+            padding: 12px 48px 14px;
+            border-bottom: 1px solid rgba(232, 220, 200, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            display: block;
+            text-decoration: none;
+            line-height: 0;
+        }
+        .logo img {
+            height: 140px;
+            width: auto;
+            transition: height 0.4s ease;
+        }
+
+        nav.scrolled .logo img {
+            height: 70px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--terracotta);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--terracotta);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background-color: var(--cream);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #5a6652;
+            border: 1px solid rgba(232, 220, 200, 0.1);
+            padding: 1.5rem;
+            min-width: 200px;
+            display: none;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+
+        .dropdown-menu.active {
+            display: flex;
+        }
+
+        .dropdown-menu a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .dropdown-menu a:hover {
+            color: var(--terracotta);
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background-color: rgba(232, 220, 200, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 16px 24px 20px;
+            }
+
+            nav.scrolled .logo img {
+                height: 55px;
+            }
+
+            nav.scrolled {
+                padding: 10px 24px 12px;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                font-size: 1.25rem;
+            }
+
+            .nav-right {
+                gap: 1rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            background: #737F69;
+            overflow: visible;
+            padding-top: 160px;
+        }
+
+        .hero-image {
+            width: 82%;
+            height: 85vh;
+            background: linear-gradient(135deg, #687560 0%, #5d6a56 50%, #525e4c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            font-size: 1.2rem;
+            color: var(--cream);
+            opacity: 0.7;
+        }
+
+        .hero-text {
+            position: absolute;
+            right: 60px;
+            top: 220px;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-family: 'Rosario', sans-serif;
+            font-size: 5.5rem;
+            font-weight: 300;
+            color: var(--cream);
+            opacity: 0.25;
+            line-height: 1;
+            letter-spacing: 4px;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Intro Section */
+        .intro {
+            padding: 4rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .intro h1 {
+            font-family: 'Rosario', sans-serif;
+            font-size: 3rem;
+            color: #FFFFFF;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            color: var(--cream);
+            max-width: 700px;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        /* Gallery Grid */
+        .gallery-section {
+            padding: 4rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            background: linear-gradient(135deg, #687560 0%, #5d6a56 100%);
+            border-radius: 2px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(232, 220, 200, 0.1);
+        }
+
+        .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+            background: linear-gradient(135deg, #687560 0%, #5d6a56 100%);
+        }
+
+        .gallery-item:nth-child(3) {
+            grid-row: span 2;
+            background: linear-gradient(135deg, #5d6a56 0%, #525e4c 100%);
+        }
+
+        .gallery-item:nth-child(5) {
+            grid-column: span 2;
+            background: linear-gradient(135deg, #687560 0%, #5d6a56 100%);
+        }
+
+        .gallery-item:nth-child(7) {
+            grid-row: span 2;
+            background: linear-gradient(135deg, #687560 0%, #5d6a56 100%);
+        }
+
+        .gallery-item:nth-child(9) {
+            grid-column: span 2;
+            grid-row: span 2;
+            background: linear-gradient(135deg, #5d6a56 0%, #525e4c 100%);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(187, 132, 111, 0.2);
+        }
+
+        .gallery-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--cream);
+            text-align: center;
+            font-weight: 400;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            transition: opacity 0.3s ease, color 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-label {
+            opacity: 1;
+            color: var(--terracotta);
+        }
+
+        @media (max-width: 1024px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+            .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .gallery-item:nth-child(3) {
+                grid-row: span 1;
+            }
+
+            .gallery-item:nth-child(5) {
+                grid-column: span 1;
+            }
+
+            .gallery-item:nth-child(7) {
+                grid-row: span 1;
+            }
+
+            .gallery-item:nth-child(9) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .gallery-item {
+                aspect-ratio: auto;
+                min-height: 200px;
+            }
+
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(5),
+            .gallery-item:nth-child(9) {
+                grid-column: span 1;
+            }
+
+            .gallery-item:nth-child(1),
+            .gallery-item:nth-child(3),
+            .gallery-item:nth-child(7),
+            .gallery-item:nth-child(9) {
+                grid-row: span 1;
+            }
+
+            .intro h1 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                height: 60vh;
+                margin-top: 80px;
+            }
+
+            .hero-text {
+                font-size: 4rem;
+                right: 1rem;
+            }
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .lightbox-content {
+            position: relative;
+            background-color: var(--black);
+            border: 2px solid var(--terracotta);
+            padding: 2rem;
+            border-radius: 4px;
+            text-align: center;
+            max-width: 80vw;
+            max-height: 80vh;
+            animation: scaleIn 0.3s ease;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .lightbox-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--cream-light) 100%);
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--green-darker);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .lightbox-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--coral);
+            margin-bottom: 1rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: var(--cream);
+            cursor: pointer;
+            transition: color 0.3s ease;
+            background: none;
+            border: none;
+            padding: 0;
+        }
+
+        .lightbox-close:hover {
+            color: var(--coral);
+        }
+
+        /* Footer */
+        footer { position: relative; padding: 0; overflow: hidden; margin-top: 6rem; }
+        .footer-bottom { background: #4a5543; padding: 60px 48px 40px; border-top: 1px solid rgba(232, 220, 200, 0.08); }
+        .footer-name { font-family: 'Rosario', sans-serif; font-weight: 400; margin-bottom: 40px; }
+        .footer-name .the { display: block; font-size: 1.2rem; letter-spacing: 6px; text-transform: uppercase; color: var(--terracotta); margin-bottom: 4px; }
+        .footer-name .main-name { font-size: clamp(3rem, 8vw, 7rem); color: var(--terracotta); letter-spacing: 2px; text-transform: uppercase; line-height: 1; }
+        .footer-info { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 32px; flex-wrap: wrap; gap: 24px; }
+        .footer-left p { font-family: 'Rosario', sans-serif; font-size: 0.85rem; color: var(--cream); opacity: 0.6; line-height: 1.8; }
+        .footer-left a { color: var(--cream); text-decoration: none; }
+        .footer-left a:hover { text-decoration: underline; }
+        .footer-right { display: flex; gap: 32px; }
+        .footer-right a { font-family: 'Rosario', sans-serif; font-size: 0.85rem; color: var(--cream); opacity: 0.6; text-decoration: none; transition: opacity 0.3s; }
+        .footer-right a:hover { opacity: 1; }
+        .footer-copyright { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(232, 220, 200, 0.08); }
+        .footer-copyright p { font-family: 'Rosario', sans-serif; font-size: 0.75rem; color: var(--cream); opacity: 0.35; }
+
+        /* Scroll animation */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-fade.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="nav">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="Bagley Vision Lofts">
+        </a>
+        <div class="nav-right">
+            <div class="nav-links" id="navLinks">
+                <a href="availability.html">Availability</a>
+                <a href="inquire.html">Inquire</a>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="dropdown-menu" id="dropdownMenu">
+                <a href="building.html">Building</a>
+                <a href="residences.html">Lofts</a>
+                <a href="urban-oasis.html">Urban Oasis</a>
+                <a href="neighborhood.html">Neighborhood</a>
+                <a href="availability.html">Availability</a>
+                <div class="divider"></div>
+                <a href="gallery.html">Gallery</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-image">
+            Gallery Hero Image
+        </div>
+        <div class="hero-text">Gallery</div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro scroll-fade">
+        <p>Explore a collection of imagery and renderings that reflect the building's restored character and modern evolution, capturing the spirit of Bagley Vision and the enduring energy of Corktown.</p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox('Exterior 1')">
+                <span class="gallery-label">[ Exterior 1 ]</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('Interior — Living Room')">
+                <span class="gallery-label">[ Interior — Living Room ]</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('Urban Oasis')">
+                <span class="gallery-label">[ Urban Oasis ]</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('Corktown Streetscape')">
+                <span class="gallery-label">[ Corktown Streetscape ]</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('Rooftop Views')">
+                <span class="gallery-label">[ Rooftop Views ]</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('Interior — Kitchen')">
+                <span class="gallery-label">[ Interior — Kitchen ]</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('Exterior 2 — Night')">
+                <span class="gallery-label">[ Exterior 2 — Night ]</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('Grand Lobby')">
+                <span class="gallery-label">[ Grand Lobby ]</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('Community Spaces')">
+                <span class="gallery-label">[ Community Spaces ]</span>
+            </div>
+            <div class="gallery-item" onclick="openLightbox('Restoration Detail')">
+                <span class="gallery-label">[ Restoration Detail ]</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <div class="lightbox-image" id="lightboxImage">Image</div>
+            <h2 class="lightbox-title" id="lightboxTitle">Title</h2>
+            <p style="color: var(--cream); margin-bottom: 1.5rem;">High-resolution imagery available upon request</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom">
+            <div class="footer-name">
+                <span class="the">Bagley Vision</span>
+                <span class="main-name">Lofts</span>
+            </div>
+            <div class="footer-info">
+                <div class="footer-left">
+                    <p>2150 Bagley Street, Detroit, MI 48216</p>
+                    <p><a href="mailto:info@bagleyvision.com">info@bagleyvision.com</a> | For leasing inquiries, <a href="inquire.html">click here</a></p>
+                    <p style="margin-top: 8px;"><a href="#">@bagleyvision</a></p>
+                </div>
+                <div class="footer-right">
+                    <a href="#">Fair Housing Notice</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2026, Bagley Vision Lofts. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); dropdownMenu.classList.toggle('active'); });
+        dropdownMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('active'); dropdownMenu.classList.remove('active'); }); });
+        document.addEventListener('click', (e) => { if (!e.target.closest('.nav-right')) { hamburger.classList.remove('active'); dropdownMenu.classList.remove('active'); } });
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); });
+
+        // Scroll fade animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-fade').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Lightbox functionality
+        function openLightbox(title) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxTitle = document.getElementById('lightboxTitle');
+            const lightboxImage = document.getElementById('lightboxImage');
+            lightboxTitle.textContent = title;
+            lightboxImage.textContent = title;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event && event.target !== document.getElementById('lightbox')) {
+                return;
+            }
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+    </script>
+</body>
+</html>                                 

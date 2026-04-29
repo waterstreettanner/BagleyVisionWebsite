@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Availability | Bagley Vision Lofts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rosario:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --brown: #99795F;
+            --sage: #737F69;
+            --terracotta: #BB846F;
+            --cream: #E8DCC8;
+            --black: #0f0f0f;
+            --white: #FFFFFF;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Rosario', sans-serif;
+            background-color: #737F69;
+            color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        /* ── Navigation ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 48px 28px;
+            transition: background 0.3s ease, padding 0.4s ease;
+        }
+        nav.scrolled {
+            background: rgba(115, 127, 105, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 48px 14px;
+        }
+
+        .nav-logo {
+            display: block;
+            text-decoration: none;
+            line-height: 0;
+        }
+        .nav-logo img {
+            height: 140px;
+            width: auto;
+            transition: height 0.4s ease;
+        }
+        nav.scrolled .nav-logo img {
+            height: 70px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        .nav-right > a {
+            font-family: 'Rosario', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--cream);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: opacity 0.3s;
+        }
+        .nav-right > a:hover { opacity: 0.7; }
+
+        /* ── Dropdown Menu ── */
+        .nav-dropdown { position: relative; }
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: var(--cream);
+            transition: 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 16px);
+            right: 0;
+            background: #5a6652;
+            border: 1px solid rgba(232, 220, 200, 0.12);
+            min-width: 220px;
+            padding: 12px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+        .dropdown-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 14px 32px;
+            font-family: 'Rosario', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--cream);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .dropdown-menu a:hover {
+            background: rgba(232, 220, 200, 0.06);
+            color: var(--terracotta);
+        }
+        .dropdown-divider {
+            height: 1px;
+            background: rgba(232, 220, 200, 0.1);
+            margin: 6px 0;
+        }
+
+        /* ── Full-screen Mobile Menu ── */
+        .mobile-menu {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #5a6652;
+            z-index: 200;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 36px;
+        }
+        .mobile-menu.active { display: flex; }
+        .mobile-menu a {
+            font-family: 'Rosario', sans-serif;
+            font-size: 2.2rem;
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .mobile-menu a:hover { color: var(--terracotta); }
+        .menu-close {
+            position: absolute;
+            top: 28px; right: 48px;
+            font-size: 2rem;
+            color: var(--cream);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-weight: 300;
+        }
+
+        /* ── Hero Section ── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #737F69;
+            overflow: visible;
+            padding-top: 200px;
+            padding-bottom: 80px;
+        }
+        .hero-vertical-text {
+            position: absolute;
+            right: 60px; top: 180px;
+            writing-mode: vertical-rl;
+            font-family: 'Rosario', sans-serif;
+            font-size: 5.5rem;
+            font-weight: 300;
+            color: var(--cream);
+            opacity: 0.25;
+            letter-spacing: 4px;
+            z-index: 2;
+        }
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+        }
+        .hero-content h1 {
+            font-family: 'Rosario', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--white);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .hero-content p {
+            font-family: 'Rosario', sans-serif;
+            font-size: 1.05rem;
+            color: var(--cream);
+            opacity: 0.7;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* ── Availability Table ── */
+        .availability-section {
+            padding: 80px 48px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .availability-section h2 {
+            font-family: 'Rosario', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--white);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 48px;
+        }
+
+        .availability-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .availability-table thead {
+            border-bottom: 2px solid rgba(232, 220, 200, 0.15);
+        }
+        .availability-table th {
+            padding: 16px 20px;
+            text-align: left;
+            font-family: 'Rosario', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .availability-table tbody tr {
+            border-bottom: 1px solid rgba(232, 220, 200, 0.06);
+            transition: background 0.3s ease;
+        }
+        .availability-table tbody tr:hover {
+            background: rgba(187, 132, 111, 0.06);
+        }
+        .availability-table td {
+            padding: 18px 20px;
+            font-size: 0.95rem;
+            color: var(--cream);
+            opacity: 0.85;
+        }
+        .unit-type {
+            color: var(--terracotta);
+            font-weight: 500;
+            opacity: 1 !important;
+        }
+        .status-available {
+            color: var(--cream);
+            font-weight: 500;
+            opacity: 1 !important;
+        }
+
+        .commercial-notice {
+            background: rgba(187, 132, 111, 0.08);
+            border-left: 3px solid var(--terracotta);
+            padding: 24px 28px;
+            margin-top: 16px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            opacity: 0.85;
+        }
+        .commercial-notice strong {
+            color: var(--terracotta);
+        }
+
+        /* ── Contact / Inquire Section ── */
+        .contact-section {
+            padding: 80px 48px;
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid rgba(232, 220, 200, 0.08);
+        }
+        .contact-section h2 {
+            font-family: 'Rosario', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--white);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            scroll-margin-top: 120px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-family: 'Rosario', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--terracotta);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        .contact-info p {
+            font-family: 'Rosario', sans-serif;
+            font-size: 0.95rem;
+            color: var(--cream);
+            opacity: 0.7;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .contact-info a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .contact-info a:hover { opacity: 0.5; }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        label {
+            font-family: 'Rosario', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--cream);
+            opacity: 0.5;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 6px;
+            display: block;
+        }
+        input, select, textarea {
+            background: rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(232, 220, 200, 0.12);
+            color: var(--cream);
+            padding: 12px 16px;
+            font-family: 'Rosario', sans-serif;
+            font-size: 0.95rem;
+            border-radius: 2px;
+            transition: border-color 0.3s, background 0.3s;
+            width: 100%;
+        }
+        input::placeholder, textarea::placeholder {
+            color: rgba(232, 220, 200, 0.3);
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            background: rgba(0, 0, 0, 0.25);
+        }
+        select { cursor: pointer; }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .submit-btn {
+            background: var(--terracotta);
+            color: var(--white);
+            border: none;
+            padding: 14px 32px;
+            font-family: 'Rosario', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.3s;
+            align-self: flex-start;
+        }
+        .submit-btn:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+        }
+
+        /* ── Footer ── */
+        footer { position: relative; padding: 0; overflow: hidden; }
+        .footer-bottom {
+            background: #4a5543;
+            padding: 60px 48px 40px;
+            border-top: 1px solid rgba(232, 220, 200, 0.08);
+        }
+        .footer-name {
+            font-family: 'Rosario', sans-serif;
+            font-weight: 400;
+            margin-bottom: 40px;
+        }
+        .footer-name .the {
+            display: block;
+            font-size: 1.2rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 4px;
+        }
+        .footer-name .main-name {
+            font-size: clamp(3rem, 8vw, 7rem);
+            color: var(--terracotta);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .footer-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 32px;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .footer-left p {
+            font-family: 'Rosario', sans-serif;
+            font-size: 0.85rem;
+            color: var(--cream);
+            opacity: 0.6;
+            line-height: 1.8;
+        }
+        .footer-left a { color: var(--cream); text-decoration: none; }
+        .footer-left a:hover { text-decoration: underline; }
+        .footer-right { display: flex; gap: 32px; }
+        .footer-right a {
+            font-family: 'Rosario', sans-serif;
+            font-size: 0.85rem;
+            color: var(--cream);
+            opacity: 0.6;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .footer-right a:hover { opacity: 1; }
+        .footer-copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(232, 220, 200, 0.08);
+        }
+        .footer-copyright p {
+            font-family: 'Rosario', sans-serif;
+            font-size: 0.75rem;
+            color: var(--cream);
+            opacity: 0.35;
+        }
+
+        /* ── Animations ── */
+        .fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── Responsive ── */
+        @media (max-width: 1024px) {
+            .contact-grid { grid-template-columns: 1fr; }
+            .hero-vertical-text { font-size: 5rem; right: 30px; }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 16px 24px 20px; }
+            .nav-logo img { height: 100px; }
+            nav.scrolled .nav-logo img { height: 55px; }
+            nav.scrolled { padding: 10px 24px 12px; }
+            .nav-right > a { display: none; }
+            .dropdown-menu { right: -12px; min-width: 200px; }
+            .hero-vertical-text { font-size: 3.5rem; right: 16px; top: 70px; }
+            .hero { padding-top: 160px; padding-bottom: 40px; }
+            .hero-content h1 { font-size: 1.8rem; }
+            .availability-section { padding: 60px 24px; }
+            .contact-section { padding: 60px 24px; }
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            .availability-table th, .availability-table td { padding: 12px; font-size: 0.85rem; }
+            .footer-bottom { padding: 40px 24px 32px; }
+            .footer-name .main-name { font-size: 2.5rem; }
+            .footer-info { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">
+            <img src="logo.png" alt="Bagley Vision Lofts">
+        </a>
+        <div class="nav-right">
+            <a href="availability.html">Availability</a>
+            <a href="inquire.html">Inquire</a>
+            <div class="nav-dropdown">
+                <button class="hamburger" id="dropdownToggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="building.html">Building</a>
+                    <a href="residences.html">Lofts</a>
+                    <a href="urban-oasis.html">Urban Oasis</a>
+                    <a href="neighborhood.html">Neighborhood</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="availability.html">Availability</a>
+                    <a href="gallery.html">Gallery</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="menu-close" id="menuClose">&times;</button>
+        <a href="building.html">Building</a>
+        <a href="residences.html">Lofts</a>
+        <a href="urban-oasis.html">Urban Oasis</a>
+        <a href="neighborhood.html">Neighborhood</a>
+        <a href="availability.html">Availability</a>
+        <a href="gallery.html">Gallery</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-vertical-text">Availability</div>
+        <div class="hero-content">
+            <h1>Find Your Space</h1>
+            <p>Explore residential and commercial opportunities at Bagley Vision</p>
+        </div>
+    </section>
+
+    <!-- Availability Table -->
+    <section class="availability-section fade-in">
+        <h2>Current Availability</h2>
+
+        <div class="table-wrapper">
+            <table class="availability-table">
+                <thead>
+                    <tr>
+                        <th>Unit #</th>
+                        <th>Type</th>
+                        <th>Sq Ft</th>
+                        <th>Price/Month</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>101</td>
+                        <td class="unit-type">Junior 1BD</td>
+                        <td>550</td>
+                        <td>Contact for pricing</td>
+                        <td class="status-available">Available</td>
+                    </tr>
+                    <tr>
+                        <td>102</td>
+                        <td class="unit-type">Junior 1BD</td>
+                        <td>560</td>
+                        <td>Contact for pricing</td>
+                        <td class="status-available">Available</td>
+                    </tr>
+                    <tr>
+                        <td>103</td>
+                        <td class="unit-type">Junior 1BD</td>
+                        <td>550</td>
+                        <td>Contact for pricing</td>
+                        <td class="status-available">Available</td>
+                    </tr>
+                    <tr>
+                        <td>201</td>
+                        <td class="unit-type">1 Bedroom</td>
+                        <td>750</td>
+                        <td>Contact for pricing</td>
+                        <td class="status-available">Available</td>
+                    </tr>
+                    <tr>
+                        <td>202</td>
+                        <td class="unit-type">1 Bedroom</td>
+                        <td>780</td>
+                        <td>Contact for pricing</td>
+                        <td class="status-available">Available</td>
+                    </tr>
+                    <tr>
+                        <td>203</td>
+                        <td class="unit-type">1 Bedroom</td>
+                        <td>750</td>
+                        <td>Contact for pricing</td>
+                        <td class="status-available">Available</td>
+                    </tr>
+                    <tr>
+                        <td>204</td>
+                        <td class="unit-type">1 Bedroom</td>
+                        <td>790</td>
+                        <td>Contact for pricing</td>
+                        <td class="status-available">Available</td>
+                    </tr>
+                    <tr>
+                        <td>301</td>
+                        <td class="unit-type">2 Bedroom</td>
+                        <td>1,200</td>
+                        <td>Contact for pricing</td>
+                        <td class="status-available">Available</td>
+                    </tr>
+                    <tr>
+                        <td>302</td>
+                        <td class="unit-type">2 Bedroom</td>
+                        <td>1,250</td>
+                        <td>Contact for pricing</td>
+                        <td class="status-available">Available</td>
+                    </tr>
+                    <tr>
+                        <td>303</td>
+                        <td class="unit-type">2 Bedroom</td>
+                        <td>1,200</td>
+                        <td>Contact for pricing</td>
+                        <td class="status-available">Available</td>
+                    </tr>
+                    <tr>
+                        <td>304</td>
+                        <td class="unit-type">2 Bedroom</td>
+                        <td>1,280</td>
+                        <td>Contact for pricing</td>
+                        <td class="status-available">Available</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="commercial-notice">
+            <strong>Commercial Space Available:</strong> 10,000 sq ft of modern commercial space ready for your business. Flexible layouts, prime location in the heart of Detroit. Contact us for detailed information and custom pricing.
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section fade-in" id="inquire">
+        <h2>Get in Touch</h2>
+
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <p>
+                    <strong>Bagley Vision Lofts</strong><br>
+                    2150 Bagley Street<br>
+                    Detroit, MI 48216
+                </p>
+                <p>
+                    <strong>Email:</strong><br>
+                    <a href="mailto:info@bagleyvision.com">info@bagleyvision.com</a>
+                </p>
+                <p>
+                    <strong>Social Media:</strong><br>
+                    <a href="https://instagram.com/bagleyvision">@bagleyvision</a>
+                </p>
+                <p style="font-size: 0.85rem; margin-top: 12px; opacity: 0.5;">
+                    We're committed to providing equal housing opportunities. Bagley Vision is in full compliance with the Fair Housing Act and all applicable housing laws.
+                </p>
+            </div>
+
+            <form>
+                <div>
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+                <div>
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+                <div>
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+                </div>
+                <div>
+                    <label for="interested">Interested In</label>
+                    <select id="interested" name="interested" required>
+                        <option value="">Select an option</option>
+                        <option value="residential">Residential</option>
+                        <option value="commercial">Commercial</option>
+                        <option value="both">Both Residential &amp; Commercial</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us more about your needs..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom">
+            <div class="footer-name">
+                <span class="the">Bagley Vision</span>
+                <span class="main-name">Lofts</span>
+            </div>
+            <div class="footer-info">
+                <div class="footer-left">
+                    <p>2150 Bagley Street, Detroit, MI 48216</p>
+                    <p><a href="mailto:info@bagleyvision.com">info@bagleyvision.com</a> | For leasing inquiries, <a href="inquire.html">click here</a></p>
+                    <p style="margin-top: 8px;"><a href="#">@bagleyvision</a></p>
+                </div>
+                <div class="footer-right">
+                    <a href="#">Fair Housing Notice</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>&copy; 2026, Bagley Vision Lofts. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 80); });
+
+        const dropdownToggle = document.getElementById('dropdownToggle');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        dropdownToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = dropdownMenu.classList.toggle('open');
+            dropdownToggle.classList.toggle('active', isOpen);
+        });
+        document.addEventListener('click', () => { dropdownMenu.classList.remove('open'); dropdownToggle.classList.remove('active'); });
+        dropdownMenu.addEventListener('click', (e) => e.stopPropagation());
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href.length > 1) { e.preventDefault(); const t = document.querySelector(href); if (t) t.scrollIntoView({ behavior: 'smooth' }); }
+            });
+        });
+
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will contact you shortly.');
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
