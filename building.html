@@ -34,31 +34,37 @@
             right: 0;
             z-index: 1000;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
-            padding: 24px 48px 28px;
-            transition: background 0.3s ease, padding 0.4s ease;
+            height: 120px;
+            padding: 15px 48px;
+            background: rgba(250, 248, 244, 0.95);
+            backdrop-filter: blur(10px);
         }
 
         nav.scrolled {
-            background-color: rgba(250, 248, 244, 0.95);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-            padding: 24px 48px 28px;
+            background: rgba(250, 248, 244, 0.95);
+            backdrop-filter: blur(10px);
+            height: 120px;
+            padding: 15px 48px;
         }
 
         .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             display: block;
             text-decoration: none;
             line-height: 0;
         }
         .logo img {
-            height: 140px;
+            height: 90px;
             width: auto;
             transition: height 0.4s ease;
         }
 
         nav.scrolled .logo img {
-            height: 140px;
+            height: 90px;
         }
 
         .nav-right {
@@ -76,7 +82,7 @@
         .nav-links a {
             color: #99795F;
             text-decoration: none;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             transition: color 0.3s ease;
         }
 
@@ -167,12 +173,9 @@
         /* Hero Section */
         .hero {
             position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: flex-end;
             background: #FAF8F4;
             overflow: hidden;
-            padding-top: 160px;
+            padding-top: 120px;
         }
 
         .hero-image {
@@ -214,7 +217,7 @@
 
         .section-title {
             font-family: 'Rosario', sans-serif;
-            font-size: 3.2rem;
+            font-size: 2.8rem;
             font-weight: 400;
             color: #B8846F;
             margin-bottom: 2rem;
@@ -222,7 +225,7 @@
         }
 
         .section-text {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #2C2C2C;
             line-height: 1.8;
             max-width: 800px;
@@ -268,7 +271,7 @@
 
         .detail-text h3 {
             font-family: 'Rosario', sans-serif;
-            font-size: 3.2rem;
+            font-size: 2.8rem;
             font-weight: 400;
             color: #B8846F;
             margin-bottom: 1rem;
@@ -276,7 +279,7 @@
         }
 
         .detail-text p {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: #2C2C2C;
             line-height: 1.8;
             opacity: 0.85;
@@ -301,19 +304,26 @@
         /* Responsive */
         @media (max-width: 768px) {
             nav {
-                padding: 16px 24px 20px;
+                height: 80px;
+                padding: 10px 24px;
+                background: rgba(250, 248, 244, 0.95);
             }
 
             nav.scrolled .logo img {
-                height: 140px;
+                height: 60px;
             }
 
             nav.scrolled {
-                padding: 16px 24px 20px;
+                height: 80px;
+                padding: 10px 24px;
             }
 
             .logo {
                 font-size: 1.2rem;
+            }
+
+            .logo img {
+                height: 60px;
             }
 
             .nav-right {

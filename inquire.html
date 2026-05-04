@@ -33,29 +33,35 @@
             top: 0; left: 0; right: 0;
             z-index: 100;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end;
             align-items: center;
-            padding: 24px 48px 28px;
-            transition: background 0.3s ease, padding 0.4s ease;
+            height: 120px;
+            padding: 15px 48px;
+            background: rgba(250, 248, 244, 0.95);
+            backdrop-filter: blur(10px);
         }
         nav.scrolled {
             background: rgba(250, 248, 244, 0.95);
             backdrop-filter: blur(10px);
-            padding: 24px 48px 28px;
+            height: 120px;
+            padding: 15px 48px;
         }
 
         .nav-logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             display: block;
             text-decoration: none;
             line-height: 0;
         }
         .nav-logo img {
-            height: 140px;
+            height: 90px;
             width: auto;
             transition: height 0.4s ease;
         }
         nav.scrolled .nav-logo img {
-            height: 140px;
+            height: 90px;
         }
 
         .nav-right {
@@ -65,7 +71,7 @@
         }
         .nav-right > a {
             font-family: 'Rosario', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 400;
             color: #99795F;
             text-decoration: none;
@@ -175,7 +181,7 @@
             justify-content: center;
             background: #FAF8F4;
             overflow: visible;
-            padding-top: 220px;
+            padding-top: 180px;
             padding-bottom: 60px;
         }
         .hero-vertical-text {
@@ -196,7 +202,7 @@
         }
         .hero-content h1 {
             font-family: 'Rosario', sans-serif;
-            font-size: 3.2rem;
+            font-size: 2.8rem;
             font-weight: 400;
             color: var(--main);
             letter-spacing: 3px;
@@ -205,7 +211,7 @@
         }
         .hero-content p {
             font-family: 'Rosario', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             color: var(--text);
             opacity: 0.7;
             max-width: 500px;
@@ -214,7 +220,7 @@
 
         /* ── Form Section ── */
         .form-section {
-            padding: 40px 48px 100px;
+            padding: 40px 48px 320px;
             max-width: 720px;
             margin: 0 auto;
         }
@@ -434,10 +440,10 @@
             .hero-vertical-text { font-size: 5rem; right: 30px; }
         }
         @media (max-width: 768px) {
-            nav { padding: 16px 24px 20px; }
-            .nav-logo img { height: 100px; }
-            nav.scrolled .nav-logo img { height: 140px; }
-            nav.scrolled { padding: 10px 24px 12px; }
+            nav { height: 80px; padding: 10px 24px; background: rgba(250, 248, 244, 0.95); }
+            .nav-logo img { height: 60px; }
+            nav.scrolled .nav-logo img { height: 60px; }
+            nav.scrolled { height: 80px; padding: 10px 24px; }
             .nav-right > a { display: none; }
             .dropdown-menu { right: -12px; min-width: 200px; }
             .hero-vertical-text { font-size: 3.5rem; right: 16px; top: 70px; }
@@ -558,24 +564,6 @@
             <button type="submit" class="submit-btn">Submit Inquiry</button>
         </form>
     </section>
-
-    <!-- Contact Info -->
-    <div class="contact-bar fade-in">
-        <div class="contact-bar-inner">
-            <div class="contact-bar-item">
-                <p>
-                    <strong>Bagley Vision Lofts</strong><br>
-                    2150 Bagley Street, Detroit, MI 48216
-                </p>
-            </div>
-            <div class="contact-bar-item">
-                <p><a href="mailto:info@bagleyvision.com">info@bagleyvision.com</a></p>
-            </div>
-            <div class="contact-bar-item">
-                <p><a href="https://instagram.com/bagleyvision">@bagleyvision</a></p>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer>
