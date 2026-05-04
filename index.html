@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bagley Vision Lofts | 2150 Bagley Street, Detroit</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rosario:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rosario:wght@400&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --brown: #99795F;
-            --sage: #737F69;
-            --terracotta: #BB846F;
-            --cream: #E8DCC8;
-            --black: #0f0f0f;
+            --ivory: #FAF8F4;
+            --main: #B8846F;
+            --secondary: #737F69;
+            --selective: #E8DCC8;
+            --text: #2C2C2C;
             --white: #FFFFFF;
         }
 
@@ -21,8 +21,9 @@
 
         body {
             font-family: 'Rosario', sans-serif;
-            background-color: #737F69;
-            color: var(--cream);
+            font-weight: 400;
+            background-color: var(--ivory);
+            color: var(--text);
             overflow-x: hidden;
         }
 
@@ -38,7 +39,7 @@
             transition: background 0.3s ease, padding 0.4s ease;
         }
         nav.scrolled {
-            background: rgba(115, 127, 105, 0.95);
+            background: rgba(250, 248, 244, 0.95);
             backdrop-filter: blur(10px);
             padding: 24px 48px 28px;
         }
@@ -64,9 +65,9 @@
         }
         .nav-right > a {
             font-family: 'Rosario', sans-serif;
-            font-size: 0.9rem;
+            font-size: 1.4rem;
             font-weight: 400;
-            color: var(--cream);
+            color: #99795F;
             text-decoration: none;
             letter-spacing: 0.5px;
             transition: opacity 0.3s;
@@ -88,7 +89,7 @@
             display: block;
             width: 24px;
             height: 1.5px;
-            background: var(--cream);
+            background: #99795F;
             transition: 0.3s;
         }
         .hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
@@ -99,8 +100,8 @@
             position: absolute;
             top: calc(100% + 16px);
             right: 0;
-            background: #5a6652;
-            border: 1px solid rgba(232, 220, 200, 0.12);
+            background: var(--white);
+            border: 1px solid rgba(44, 44, 44, 0.1);
             min-width: 220px;
             padding: 12px 0;
             opacity: 0;
@@ -119,18 +120,18 @@
             font-family: 'Rosario', sans-serif;
             font-size: 1.05rem;
             font-weight: 400;
-            color: var(--cream);
+            color: var(--text);
             text-decoration: none;
             letter-spacing: 0.5px;
             transition: background 0.2s, color 0.2s;
         }
         .dropdown-menu a:hover {
-            background: rgba(232, 220, 200, 0.06);
-            color: var(--terracotta);
+            background: rgba(184, 132, 111, 0.08);
+            color: var(--main);
         }
         .dropdown-divider {
             height: 1px;
-            background: rgba(232, 220, 200, 0.1);
+            background: rgba(44, 44, 44, 0.1);
             margin: 6px 0;
         }
 
@@ -138,7 +139,7 @@
         .mobile-menu {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: #5a6652;
+            background: var(--ivory);
             z-index: 200;
             display: none;
             flex-direction: column;
@@ -150,20 +151,20 @@
         .mobile-menu a {
             font-family: 'Rosario', sans-serif;
             font-size: 2.2rem;
-            color: var(--cream);
+            color: var(--text);
             text-decoration: none;
             transition: color 0.3s;
         }
-        .mobile-menu a:hover { color: var(--terracotta); }
+        .mobile-menu a:hover { color: var(--main); }
         .menu-close {
             position: absolute;
             top: 28px; right: 48px;
             font-size: 2rem;
-            color: var(--cream);
+            color: var(--text);
             cursor: pointer;
             background: none;
             border: none;
-            font-weight: 300;
+            font-weight: 400;
         }
 
         /* ── Hero Section ── */
@@ -172,7 +173,7 @@
             min-height: 100vh;
             display: flex;
             align-items: flex-end;
-            background: #737F69;
+            background: var(--ivory);
             overflow: hidden;
             padding-top: 160px;
         }
@@ -182,8 +183,8 @@
             writing-mode: vertical-rl;
             font-family: 'Rosario', sans-serif;
             font-size: 7rem;
-            font-weight: 300;
-            color: var(--cream);
+            font-weight: 400;
+            color: var(--text);
             opacity: 0.25;
             letter-spacing: 4px;
             z-index: 2;
@@ -195,11 +196,11 @@
         }
 
         .image-placeholder {
-            background: linear-gradient(135deg, #687560 0%, #5d6a56 50%, #525e4c 100%);
+            background: linear-gradient(135deg, var(--selective) 0%, #d4c8b4 50%, #c9bda9 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--brown);
+            color: var(--secondary);
             font-family: 'Rosario', sans-serif;
             font-size: 0.85rem;
             letter-spacing: 2px;
@@ -234,19 +235,19 @@
         .content-text { padding: 60px 80px; }
         .content-text h3 {
             font-family: 'Rosario', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--white);
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: var(--main);
             margin-bottom: 28px;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
         .content-text p {
             font-family: 'Rosario', sans-serif;
-            font-size: 1.08rem;
+            font-size: 1.4rem;
             font-weight: 400;
             line-height: 1.85;
-            color: var(--cream);
+            color: var(--text);
             opacity: 0.85;
         }
 
@@ -258,10 +259,10 @@
             margin-top: 32px;
             font-family: 'Rosario', sans-serif;
             font-size: 0.8rem;
-            font-weight: 500;
+            font-weight: 400;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: var(--terracotta);
+            color: var(--main);
             text-decoration: none;
             transition: opacity 0.3s, gap 0.3s;
         }
@@ -276,9 +277,9 @@
         /* ── Footer ── */
         footer { position: relative; padding: 0; overflow: hidden; }
         .footer-bottom {
-            background: #4a5543;
+            background: var(--main);
             padding: 60px 48px 40px;
-            border-top: 1px solid rgba(232, 220, 200, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         .footer-name {
             font-family: 'Rosario', sans-serif;
@@ -290,12 +291,12 @@
             font-size: 1.2rem;
             letter-spacing: 6px;
             text-transform: uppercase;
-            color: var(--terracotta);
+            color: var(--white);
             margin-bottom: 4px;
         }
         .footer-name .main-name {
             font-size: clamp(3rem, 8vw, 7rem);
-            color: var(--terracotta);
+            color: var(--white);
             letter-spacing: 2px;
             text-transform: uppercase;
             line-height: 1;
@@ -311,18 +312,18 @@
         .footer-left p {
             font-family: 'Rosario', sans-serif;
             font-size: 0.85rem;
-            color: var(--cream);
-            opacity: 0.6;
+            color: var(--white);
+            opacity: 0.85;
             line-height: 1.8;
         }
-        .footer-left a { color: var(--cream); text-decoration: none; }
+        .footer-left a { color: var(--white); text-decoration: none; }
         .footer-left a:hover { text-decoration: underline; }
         .footer-right { display: flex; gap: 32px; }
         .footer-right a {
             font-family: 'Rosario', sans-serif;
             font-size: 0.85rem;
-            color: var(--cream);
-            opacity: 0.6;
+            color: var(--white);
+            opacity: 0.7;
             text-decoration: none;
             transition: opacity 0.3s;
         }
@@ -330,13 +331,13 @@
         .footer-copyright {
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid rgba(232, 220, 200, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         .footer-copyright p {
             font-family: 'Rosario', sans-serif;
             font-size: 0.75rem;
-            color: var(--cream);
-            opacity: 0.35;
+            color: var(--white);
+            opacity: 0.4;
         }
 
         /* ── Animations ── */
@@ -411,9 +412,15 @@
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-image-container" style="width:100%;">
+        <div class="hero-image-container" style="width:100%; position:relative;">
             <img src="hero.jpg" alt="Bagley Vision Lofts Exterior" style="width:100%; height:85vh; object-fit:cover; display:block;">
+            <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-family:'Rosario',sans-serif; font-size:2.5rem; font-weight:400; color:#FFFFFF; letter-spacing:6px; text-transform:uppercase;">Now Leasing</div>
         </div>
+    </section>
+
+    <!-- ═══════════ INTRO TEXT ═══════════ -->
+    <section style="max-width:900px; margin:0 auto; padding:5rem 3rem; text-align:center;">
+        <p style="font-family:'Rosario',sans-serif; font-size:1.4rem; font-weight:400; color:#B8846F; line-height:1.8;">A century-old landmark, once left in disrepair, has been thoughtfully restored and reimagined for modern living. Now leasing, Bagley Vision blends historic character with new life, offering a rare opportunity to be part of its next chapter.</p>
     </section>
 
     <!-- ═══════════ BUILDING ═══════════ -->
@@ -528,4 +535,4 @@
     </script>
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     

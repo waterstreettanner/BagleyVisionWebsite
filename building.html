@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Building - Bagley Vision</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rosario:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rosario:wght@400&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -19,10 +19,11 @@
 
         body {
             font-family: 'Rosario', sans-serif;
-            background-color: #737F69;
-            color: #E8DCC8;
+            background-color: #FAF8F4;
+            color: #2C2C2C;
             line-height: 1.6;
             overflow-x: hidden;
+            font-weight: 400;
         }
 
         /* Navigation */
@@ -40,7 +41,7 @@
         }
 
         nav.scrolled {
-            background-color: rgba(115, 127, 105, 0.95);
+            background-color: rgba(250, 248, 244, 0.95);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
             padding: 24px 48px 28px;
         }
@@ -67,24 +68,26 @@
         }
 
         .nav-links {
-            display: none;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
         }
 
         .nav-links a {
-            color: #E8DCC8;
+            color: #99795F;
             text-decoration: none;
-            font-size: 0.95rem;
+            font-size: 1.4rem;
             transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #BB846F;
+            color: #B8846F;
         }
 
         .nav-links .divider {
             width: 1px;
             height: 1rem;
-            background-color: #E8DCC8;
+            background-color: #2C2C2C;
             opacity: 0.3;
             margin: 0 1rem;
         }
@@ -102,7 +105,7 @@
         .hamburger span {
             width: 24px;
             height: 2px;
-            background-color: #E8DCC8;
+            background-color: #99795F;
             transition: all 0.3s ease;
         }
 
@@ -122,8 +125,8 @@
             position: absolute;
             top: 100%;
             right: 3rem;
-            background-color: #5a6652;
-            border: 1px solid #E8DCC8;
+            background-color: #FFFFFF;
+            border: 1px solid rgba(44, 44, 44, 0.1);
             border-top: none;
             min-width: 200px;
             display: none;
@@ -137,10 +140,10 @@
         }
 
         .dropdown-menu a {
-            color: #E8DCC8;
+            color: #2C2C2C;
             text-decoration: none;
             padding: 1rem 1.5rem;
-            border-bottom: 1px solid rgba(232, 220, 200, 0.1);
+            border-bottom: 1px solid rgba(44, 44, 44, 0.08);
             transition: background-color 0.2s ease, color 0.2s ease;
             font-size: 0.95rem;
         }
@@ -150,13 +153,13 @@
         }
 
         .dropdown-menu a:hover {
-            background-color: rgba(187, 132, 111, 0.15);
-            color: #BB846F;
+            background-color: rgba(184, 132, 111, 0.08);
+            color: #B8846F;
         }
 
         .dropdown-menu .divider {
             height: 1px;
-            background-color: #E8DCC8;
+            background-color: #2C2C2C;
             opacity: 0.3;
             margin: 0.5rem 0;
         }
@@ -167,7 +170,7 @@
             min-height: 100vh;
             display: flex;
             align-items: flex-end;
-            background: #737F69;
+            background: #FAF8F4;
             overflow: hidden;
             padding-top: 160px;
         }
@@ -175,13 +178,13 @@
         .hero-image {
             width: 82%;
             height: 85vh;
-            background: linear-gradient(135deg, #687560 0%, #5d6a56 50%, #525e4c 100%);
+            background: linear-gradient(135deg, #E8DCC8 0%, #d4c8b4 50%, #c9bda9 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
             font-size: 1.2rem;
-            color: #E8DCC8;
+            color: #2C2C2C;
             opacity: 0.7;
         }
 
@@ -193,8 +196,8 @@
             text-orientation: mixed;
             font-family: 'Rosario', sans-serif;
             font-size: 7rem;
-            font-weight: 300;
-            color: #E8DCC8;
+            font-weight: 400;
+            color: #2C2C2C;
             opacity: 0.25;
             line-height: 1;
             letter-spacing: 4px;
@@ -211,16 +214,16 @@
 
         .section-title {
             font-family: 'Rosario', sans-serif;
-            font-size: 3rem;
-            font-weight: 700;
-            color: #FFFFFF;
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: #B8846F;
             margin-bottom: 2rem;
             letter-spacing: -1px;
         }
 
         .section-text {
-            font-size: 1.1rem;
-            color: #E8DCC8;
+            font-size: 1.4rem;
+            color: #2C2C2C;
             line-height: 1.8;
             max-width: 800px;
             margin-bottom: 4rem;
@@ -253,47 +256,47 @@
         .detail-image {
             width: 100%;
             height: 400px;
-            background: linear-gradient(135deg, #687560 0%, #5d6a56 50%, #525e4c 100%);
+            background: linear-gradient(135deg, #E8DCC8 0%, #d4c8b4 50%, #c9bda9 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.1rem;
-            color: #E8DCC8;
+            color: #2C2C2C;
             opacity: 0.6;
-            border: 1px solid rgba(232, 220, 200, 0.1);
+            border: 0.5px solid rgba(184, 132, 111, 0.5);
         }
 
         .detail-text h3 {
             font-family: 'Rosario', sans-serif;
-            font-size: 2rem;
-            font-weight: 600;
-            color: #FFFFFF;
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: #B8846F;
             margin-bottom: 1rem;
             letter-spacing: -0.5px;
         }
 
         .detail-text p {
-            font-size: 1rem;
-            color: #E8DCC8;
+            font-size: 1.4rem;
+            color: #2C2C2C;
             line-height: 1.8;
             opacity: 0.85;
         }
 
         /* Footer */
         footer { position: relative; padding: 0; overflow: hidden; }
-        .footer-bottom { background: #4a5543; padding: 60px 48px 40px; border-top: 1px solid rgba(232, 220, 200, 0.08); }
+        .footer-bottom { background: #B8846F; padding: 60px 48px 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
         .footer-name { font-family: 'Rosario', sans-serif; font-weight: 400; margin-bottom: 40px; }
-        .footer-name .the { display: block; font-size: 1.2rem; letter-spacing: 6px; text-transform: uppercase; color: #BB846F; margin-bottom: 4px; }
-        .footer-name .main-name { font-size: clamp(3rem, 8vw, 7rem); color: #BB846F; letter-spacing: 2px; text-transform: uppercase; line-height: 1; }
+        .footer-name .the { display: block; font-size: 1.2rem; letter-spacing: 6px; text-transform: uppercase; color: #FFFFFF; margin-bottom: 4px; }
+        .footer-name .main-name { font-size: clamp(3rem, 8vw, 7rem); color: #FFFFFF; letter-spacing: 2px; text-transform: uppercase; line-height: 1; }
         .footer-info { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 32px; flex-wrap: wrap; gap: 24px; }
-        .footer-left p { font-family: 'Rosario', sans-serif; font-size: 0.85rem; color: #E8DCC8; opacity: 0.6; line-height: 1.8; }
-        .footer-left a { color: #E8DCC8; text-decoration: none; }
+        .footer-left p { font-family: 'Rosario', sans-serif; font-size: 0.85rem; color: #FFFFFF; opacity: 0.6; line-height: 1.8; }
+        .footer-left a { color: #FFFFFF; text-decoration: none; }
         .footer-left a:hover { text-decoration: underline; }
         .footer-right { display: flex; gap: 32px; }
-        .footer-right a { font-family: 'Rosario', sans-serif; font-size: 0.85rem; color: #E8DCC8; opacity: 0.6; text-decoration: none; transition: opacity 0.3s; }
+        .footer-right a { font-family: 'Rosario', sans-serif; font-size: 0.85rem; color: #FFFFFF; opacity: 0.6; text-decoration: none; transition: opacity 0.3s; }
         .footer-right a:hover { opacity: 1; }
-        .footer-copyright { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(232, 220, 200, 0.08); }
-        .footer-copyright p { font-family: 'Rosario', sans-serif; font-size: 0.75rem; color: #E8DCC8; opacity: 0.35; }
+        .footer-copyright { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .footer-copyright p { font-family: 'Rosario', sans-serif; font-size: 0.75rem; color: #FFFFFF; opacity: 0.35; }
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -537,6 +540,4 @@
         detailBlocks.forEach(block => {
             observer.observe(block);
         });
-    </script>
-</body>
-</html>                                                 
+    </script

@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Availability | Bagley Vision Lofts</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rosario:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rosario:wght@400&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --brown: #99795F;
-            --sage: #737F69;
-            --terracotta: #BB846F;
-            --cream: #E8DCC8;
-            --black: #0f0f0f;
+            --ivory: #FAF8F4;
+            --main: #B8846F;
+            --secondary: #737F69;
+            --selective: #E8DCC8;
+            --text: #2C2C2C;
             --white: #FFFFFF;
         }
 
@@ -21,9 +21,10 @@
 
         body {
             font-family: 'Rosario', sans-serif;
-            background-color: #737F69;
-            color: var(--cream);
+            background-color: var(--ivory);
+            color: var(--text);
             overflow-x: hidden;
+            font-weight: 400;
         }
 
         /* ── Navigation ── */
@@ -38,7 +39,7 @@
             transition: background 0.3s ease, padding 0.4s ease;
         }
         nav.scrolled {
-            background: rgba(115, 127, 105, 0.95);
+            background: rgba(250, 248, 244, 0.95);
             backdrop-filter: blur(10px);
             padding: 24px 48px 28px;
         }
@@ -64,9 +65,9 @@
         }
         .nav-right > a {
             font-family: 'Rosario', sans-serif;
-            font-size: 0.9rem;
+            font-size: 1.4rem;
             font-weight: 400;
-            color: var(--cream);
+            color: #99795F;
             text-decoration: none;
             letter-spacing: 0.5px;
             transition: opacity 0.3s;
@@ -88,7 +89,7 @@
             display: block;
             width: 24px;
             height: 1.5px;
-            background: var(--cream);
+            background: #99795F;
             transition: 0.3s;
         }
         .hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
@@ -99,8 +100,8 @@
             position: absolute;
             top: calc(100% + 16px);
             right: 0;
-            background: #5a6652;
-            border: 1px solid rgba(232, 220, 200, 0.12);
+            background: var(--white);
+            border: 1px solid rgba(44, 44, 44, 0.1);
             min-width: 220px;
             padding: 12px 0;
             opacity: 0;
@@ -119,76 +120,31 @@
             font-family: 'Rosario', sans-serif;
             font-size: 1.05rem;
             font-weight: 400;
-            color: var(--cream);
+            color: var(--text);
             text-decoration: none;
             letter-spacing: 0.5px;
             transition: background 0.2s, color 0.2s;
         }
         .dropdown-menu a:hover {
-            background: rgba(232, 220, 200, 0.06);
-            color: var(--terracotta);
+            background: rgba(184, 132, 111, 0.08);
+            color: var(--main);
         }
         .dropdown-divider {
             height: 1px;
-            background: rgba(232, 220, 200, 0.1);
+            background: rgba(44, 44, 44, 0.08);
             margin: 6px 0;
-        }
-
-        /* ── Full-screen Mobile Menu ── */
-        .mobile-menu {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: #5a6652;
-            z-index: 200;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 36px;
-        }
-        .mobile-menu.active { display: flex; }
-        .mobile-menu a {
-            font-family: 'Rosario', sans-serif;
-            font-size: 2.2rem;
-            color: var(--cream);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        .mobile-menu a:hover { color: var(--terracotta); }
-        .menu-close {
-            position: absolute;
-            top: 28px; right: 48px;
-            font-size: 2rem;
-            color: var(--cream);
-            cursor: pointer;
-            background: none;
-            border: none;
-            font-weight: 300;
         }
 
         /* ── Hero Section ── */
         .hero {
             position: relative;
-            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #737F69;
+            background: var(--ivory);
             overflow: visible;
-            padding-top: 200px;
-            padding-bottom: 80px;
-        }
-        .hero-vertical-text {
-            position: absolute;
-            right: 60px; top: 180px;
-            writing-mode: vertical-rl;
-            font-family: 'Rosario', sans-serif;
-            font-size: 5.5rem;
-            font-weight: 300;
-            color: var(--cream);
-            opacity: 0.25;
-            letter-spacing: 4px;
-            z-index: 2;
+            padding-top: 220px;
+            padding-bottom: 60px;
         }
         .hero-content {
             text-align: center;
@@ -196,210 +152,186 @@
         }
         .hero-content h1 {
             font-family: 'Rosario', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 300;
-            color: var(--white);
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: var(--main);
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 16px;
         }
         .hero-content p {
             font-family: 'Rosario', sans-serif;
-            font-size: 1.05rem;
-            color: var(--cream);
+            font-size: 1.4rem;
+            color: var(--text);
             opacity: 0.7;
-            max-width: 500px;
+            max-width: 600px;
             margin: 0 auto;
+            line-height: 1.8;
         }
 
-        /* ── Availability Table ── */
-        .availability-section {
-            padding: 80px 48px;
-            max-width: 1200px;
+        /* ── Unit Cards Grid ── */
+        .units-section {
+            padding: 40px 48px 80px;
+            max-width: 1400px;
             margin: 0 auto;
         }
-        .availability-section h2 {
+        .units-section h2 {
             font-family: 'Rosario', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--white);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-        }
-
-        .table-wrapper {
-            overflow-x: auto;
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: var(--main);
             margin-bottom: 48px;
         }
 
-        .availability-table {
+        .units-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .unit-card {
+            background: var(--white);
+            border: 0.5px solid rgba(184, 132, 111, 0.5);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+        }
+        .unit-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .unit-card:hover {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .unit-image {
             width: 100%;
-            border-collapse: collapse;
+            aspect-ratio: 3 / 4;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
-        .availability-table thead {
-            border-bottom: 2px solid rgba(232, 220, 200, 0.15);
+        .unit-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            padding: 20px;
         }
-        .availability-table th {
-            padding: 16px 20px;
-            text-align: left;
+        .unit-image .placeholder {
             font-family: 'Rosario', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--white);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-        .availability-table tbody tr {
-            border-bottom: 1px solid rgba(232, 220, 200, 0.06);
-            transition: background 0.3s ease;
-        }
-        .availability-table tbody tr:hover {
-            background: rgba(187, 132, 111, 0.06);
-        }
-        .availability-table td {
-            padding: 18px 20px;
-            font-size: 0.95rem;
-            color: var(--cream);
-            opacity: 0.85;
-        }
-        .unit-type {
-            color: var(--terracotta);
-            font-weight: 500;
-            opacity: 1 !important;
-        }
-        .status-available {
-            color: var(--cream);
-            font-weight: 500;
-            opacity: 1 !important;
-        }
-
-        .commercial-notice {
-            background: rgba(187, 132, 111, 0.08);
-            border-left: 3px solid var(--terracotta);
-            padding: 24px 28px;
-            margin-top: 16px;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            opacity: 0.85;
-        }
-        .commercial-notice strong {
-            color: var(--terracotta);
-        }
-
-        /* ── Contact / Inquire Section ── */
-        .contact-section {
-            padding: 80px 48px;
-            max-width: 1200px;
-            margin: 0 auto;
-            border-top: 1px solid rgba(232, 220, 200, 0.08);
-        }
-        .contact-section h2 {
-            font-family: 'Rosario', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--white);
+            font-size: 0.85rem;
+            color: var(--text);
+            opacity: 0.4;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 40px;
-            scroll-margin-top: 120px;
         }
 
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+        .unit-info {
+            padding: 28px 28px 32px;
         }
 
-        .contact-info h3 {
+        .unit-name {
+            font-family: 'Rosario', sans-serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--main);
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .unit-details {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .unit-detail {
             font-family: 'Rosario', sans-serif;
             font-size: 1rem;
-            font-weight: 500;
-            color: var(--terracotta);
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-        }
-        .contact-info p {
-            font-family: 'Rosario', sans-serif;
-            font-size: 0.95rem;
-            color: var(--cream);
+            color: var(--text);
             opacity: 0.7;
-            line-height: 1.8;
-            margin-bottom: 16px;
         }
-        .contact-info a {
-            color: var(--cream);
+        .unit-detail span {
+            display: block;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 4px;
+        }
+
+        .unit-rent {
+            font-family: 'Rosario', sans-serif;
+            font-size: 1.4rem;
+            color: var(--text);
+            padding-top: 16px;
+            border-top: 1px solid rgba(44, 44, 44, 0.08);
+        }
+        .unit-rent span {
+            font-size: 0.85rem;
+            opacity: 0.5;
+        }
+
+        .unit-cta {
+            display: inline-block;
+            margin-top: 20px;
+            font-family: 'Rosario', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--main);
             text-decoration: none;
             transition: opacity 0.3s;
         }
-        .contact-info a:hover { opacity: 0.5; }
+        .unit-cta:hover { opacity: 0.6; }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+        /* ── Commercial Notice ── */
+        .commercial-notice {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 48px 80px;
+            text-align: center;
         }
-        label {
-            font-family: 'Rosario', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--cream);
-            opacity: 0.5;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 6px;
-            display: block;
+        .commercial-divider {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 48px;
         }
-        input, select, textarea {
-            background: rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(232, 220, 200, 0.12);
-            color: var(--cream);
-            padding: 12px 16px;
-            font-family: 'Rosario', sans-serif;
-            font-size: 0.95rem;
-            border-radius: 2px;
-            transition: border-color 0.3s, background 0.3s;
-            width: 100%;
-        }
-        input::placeholder, textarea::placeholder {
-            color: rgba(232, 220, 200, 0.3);
-        }
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--terracotta);
-            background: rgba(0, 0, 0, 0.25);
-        }
-        select { cursor: pointer; }
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        .submit-btn {
-            background: var(--terracotta);
-            color: var(--white);
+        .commercial-divider hr {
             border: none;
-            padding: 14px 32px;
-            font-family: 'Rosario', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: opacity 0.3s, transform 0.3s;
-            align-self: flex-start;
+            border-top: 0.5px solid #737F69;
+            margin-bottom: 80px;
         }
-        .submit-btn:hover {
+        .commercial-notice h2 {
+            font-family: 'Rosario', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 400;
+            color: var(--secondary);
+            margin-bottom: 24px;
+        }
+        .commercial-notice p {
+            font-family: 'Rosario', sans-serif;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: var(--text);
             opacity: 0.85;
-            transform: translateY(-2px);
+        }
+        .commercial-notice a {
+            color: var(--secondary);
+            text-decoration: underline;
         }
 
         /* ── Footer ── */
         footer { position: relative; padding: 0; overflow: hidden; }
         .footer-bottom {
-            background: #4a5543;
+            background: var(--main);
             padding: 60px 48px 40px;
-            border-top: 1px solid rgba(232, 220, 200, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         .footer-name {
             font-family: 'Rosario', sans-serif;
@@ -411,12 +343,12 @@
             font-size: 1.2rem;
             letter-spacing: 6px;
             text-transform: uppercase;
-            color: var(--terracotta);
+            color: var(--white);
             margin-bottom: 4px;
         }
         .footer-name .main-name {
             font-size: clamp(3rem, 8vw, 7rem);
-            color: var(--terracotta);
+            color: var(--white);
             letter-spacing: 2px;
             text-transform: uppercase;
             line-height: 1;
@@ -432,18 +364,18 @@
         .footer-left p {
             font-family: 'Rosario', sans-serif;
             font-size: 0.85rem;
-            color: var(--cream);
-            opacity: 0.6;
+            color: var(--white);
+            opacity: 0.85;
             line-height: 1.8;
         }
-        .footer-left a { color: var(--cream); text-decoration: none; }
+        .footer-left a { color: var(--white); text-decoration: none; }
         .footer-left a:hover { text-decoration: underline; }
         .footer-right { display: flex; gap: 32px; }
         .footer-right a {
             font-family: 'Rosario', sans-serif;
             font-size: 0.85rem;
-            color: var(--cream);
-            opacity: 0.6;
+            color: var(--white);
+            opacity: 0.7;
             text-decoration: none;
             transition: opacity 0.3s;
         }
@@ -451,23 +383,18 @@
         .footer-copyright {
             margin-top: 40px;
             padding-top: 20px;
-            border-top: 1px solid rgba(232, 220, 200, 0.08);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         .footer-copyright p {
             font-family: 'Rosario', sans-serif;
             font-size: 0.75rem;
-            color: var(--cream);
-            opacity: 0.35;
+            color: var(--white);
+            opacity: 0.4;
         }
-
-        /* ── Animations ── */
-        .fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
         /* ── Responsive ── */
         @media (max-width: 1024px) {
-            .contact-grid { grid-template-columns: 1fr; }
-            .hero-vertical-text { font-size: 5rem; right: 30px; }
+            .units-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
         }
         @media (max-width: 768px) {
             nav { padding: 16px 24px 20px; }
@@ -476,13 +403,12 @@
             nav.scrolled { padding: 10px 24px 12px; }
             .nav-right > a { display: none; }
             .dropdown-menu { right: -12px; min-width: 200px; }
-            .hero-vertical-text { font-size: 3.5rem; right: 16px; top: 70px; }
             .hero { padding-top: 160px; padding-bottom: 40px; }
-            .hero-content h1 { font-size: 1.8rem; }
-            .availability-section { padding: 60px 24px; }
-            .contact-section { padding: 60px 24px; }
-            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-            .availability-table th, .availability-table td { padding: 12px; font-size: 0.85rem; }
+            .hero-content h1 { font-size: 2rem; }
+            .units-section { padding: 40px 24px 60px; }
+            .units-grid { grid-template-columns: 1fr; gap: 32px; }
+            .unit-image { aspect-ratio: 3 / 4; }
+            .commercial-notice { padding: 0 24px 60px; }
             .footer-bottom { padding: 40px 24px 32px; }
             .footer-name .main-name { font-size: 2.5rem; }
             .footer-info { flex-direction: column; }
@@ -516,182 +442,267 @@
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="menu-close" id="menuClose">&times;</button>
-        <a href="building.html">Building</a>
-        <a href="residences.html">Lofts</a>
-        <a href="urban-oasis.html">Urban Oasis</a>
-        <a href="neighborhood.html">Neighborhood</a>
-        <a href="availability.html">Availability</a>
-        <a href="gallery.html">Gallery</a>
-    </div>
-
     <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Find Your Space</h1>
-            <p>Explore residential and commercial opportunities at Bagley Vision</p>
+            <h1>Current Availability</h1>
+            <p>Explore residential leasing opportunities at Bagley Vision Lofts</p>
         </div>
     </section>
 
-    <!-- Availability Table -->
-    <section class="availability-section fade-in">
-        <h2>Current Availability</h2>
+    <!-- Unit Cards -->
+    <section class="units-section">
+        <div class="units-grid">
 
-        <div class="table-wrapper">
-            <table class="availability-table">
-                <thead>
-                    <tr>
-                        <th>Unit #</th>
-                        <th>Type</th>
-                        <th>Sq Ft</th>
-                        <th>Price/Month</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>101</td>
-                        <td class="unit-type">Junior 1BD</td>
-                        <td>550</td>
-                        <td>Contact for pricing</td>
-                        <td class="status-available">Available</td>
-                    </tr>
-                    <tr>
-                        <td>102</td>
-                        <td class="unit-type">Junior 1BD</td>
-                        <td>560</td>
-                        <td>Contact for pricing</td>
-                        <td class="status-available">Available</td>
-                    </tr>
-                    <tr>
-                        <td>103</td>
-                        <td class="unit-type">Junior 1BD</td>
-                        <td>550</td>
-                        <td>Contact for pricing</td>
-                        <td class="status-available">Available</td>
-                    </tr>
-                    <tr>
-                        <td>201</td>
-                        <td class="unit-type">1 Bedroom</td>
-                        <td>750</td>
-                        <td>Contact for pricing</td>
-                        <td class="status-available">Available</td>
-                    </tr>
-                    <tr>
-                        <td>202</td>
-                        <td class="unit-type">1 Bedroom</td>
-                        <td>780</td>
-                        <td>Contact for pricing</td>
-                        <td class="status-available">Available</td>
-                    </tr>
-                    <tr>
-                        <td>203</td>
-                        <td class="unit-type">1 Bedroom</td>
-                        <td>750</td>
-                        <td>Contact for pricing</td>
-                        <td class="status-available">Available</td>
-                    </tr>
-                    <tr>
-                        <td>204</td>
-                        <td class="unit-type">1 Bedroom</td>
-                        <td>790</td>
-                        <td>Contact for pricing</td>
-                        <td class="status-available">Available</td>
-                    </tr>
-                    <tr>
-                        <td>301</td>
-                        <td class="unit-type">2 Bedroom</td>
-                        <td>1,200</td>
-                        <td>Contact for pricing</td>
-                        <td class="status-available">Available</td>
-                    </tr>
-                    <tr>
-                        <td>302</td>
-                        <td class="unit-type">2 Bedroom</td>
-                        <td>1,250</td>
-                        <td>Contact for pricing</td>
-                        <td class="status-available">Available</td>
-                    </tr>
-                    <tr>
-                        <td>303</td>
-                        <td class="unit-type">2 Bedroom</td>
-                        <td>1,200</td>
-                        <td>Contact for pricing</td>
-                        <td class="status-available">Available</td>
-                    </tr>
-                    <tr>
-                        <td>304</td>
-                        <td class="unit-type">2 Bedroom</td>
-                        <td>1,280</td>
-                        <td>Contact for pricing</td>
-                        <td class="status-available">Available</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="commercial-notice">
-            <strong>Commercial Space Available:</strong> 10,000 sq ft of modern commercial space ready for your business. Flexible layouts, prime location in the heart of Detroit. Contact us for detailed information and custom pricing.
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section fade-in" id="inquire">
-        <h2>Get in Touch</h2>
-
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h3>Contact Information</h3>
-                <p>
-                    <strong>Bagley Vision Lofts</strong><br>
-                    2150 Bagley Street<br>
-                    Detroit, MI 48216
-                </p>
-                <p>
-                    <strong>Email:</strong><br>
-                    <a href="mailto:info@bagleyvision.com">info@bagleyvision.com</a>
-                </p>
-                <p>
-                    <strong>Social Media:</strong><br>
-                    <a href="https://instagram.com/bagleyvision">@bagleyvision</a>
-                </p>
-                <p style="font-size: 0.85rem; margin-top: 12px; opacity: 0.5;">
-                    We're committed to providing equal housing opportunities. Bagley Vision is in full compliance with the Fair Housing Act and all applicable housing laws.
-                </p>
+            <!-- Unit 1 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="Bagley Vision - Apt 1.png" alt="Unit 1 Floor Plan">
+                </div>
+                <div class="unit-info">
+                    <h3 class="unit-name">Unit 1</h3>
+                    <div class="unit-details">
+                        <div class="unit-detail"><span>Bedrooms</span>1 BD</div>
+                        <div class="unit-detail"><span>Bathrooms</span>1 BA</div>
+                        <div class="unit-detail"><span>Sq Ft</span>537</div>
+                    </div>
+                    <div class="unit-rent">Contact for pricing</div>
+                    <a href="inquire.html" class="unit-cta">Inquire &rarr;</a>
+                </div>
             </div>
 
-            <form>
-                <div>
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="Your name" required>
+            <!-- Unit 2 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="Bagley Vision - Apt 2.png" alt="Unit 2 Floor Plan">
                 </div>
-                <div>
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                <div class="unit-info">
+                    <h3 class="unit-name">Unit 2</h3>
+                    <div class="unit-details">
+                        <div class="unit-detail"><span>Bedrooms</span>Jr. 1 BD</div>
+                        <div class="unit-detail"><span>Bathrooms</span>1 BA</div>
+                        <div class="unit-detail"><span>Sq Ft</span>581</div>
+                    </div>
+                    <div class="unit-rent">Contact for pricing</div>
+                    <a href="inquire.html" class="unit-cta">Inquire &rarr;</a>
                 </div>
-                <div>
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567">
+            </div>
+
+            <!-- Unit 3 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="Bagley Vision - Apt 3.png" alt="Unit 3 Floor Plan">
                 </div>
-                <div>
-                    <label for="interested">Interested In</label>
-                    <select id="interested" name="interested" required>
-                        <option value="">Select an option</option>
-                        <option value="residential">Residential</option>
-                        <option value="commercial">Commercial</option>
-                        <option value="both">Both Residential &amp; Commercial</option>
-                    </select>
+                <div class="unit-info">
+                    <h3 class="unit-name">Unit 3</h3>
+                    <div class="unit-details">
+                        <div class="unit-detail"><span>Bedrooms</span>2 BD</div>
+                        <div class="unit-detail"><span>Bathrooms</span>2.5 BA</div>
+                        <div class="unit-detail"><span>Sq Ft</span>1,162</div>
+                    </div>
+                    <div class="unit-rent">Contact for pricing</div>
+                    <a href="inquire.html" class="unit-cta">Inquire &rarr;</a>
                 </div>
-                <div>
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="Tell us more about your needs..."></textarea>
+            </div>
+
+            <!-- Unit 4 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="Bagley Vision - Apt 4.png" alt="Unit 4 Floor Plan">
                 </div>
-                <button type="submit" class="submit-btn">Send Inquiry</button>
-            </form>
+                <div class="unit-info">
+                    <h3 class="unit-name">Unit 4</h3>
+                    <div class="unit-details">
+                        <div class="unit-detail"><span>Bedrooms</span>2 BD</div>
+                        <div class="unit-detail"><span>Bathrooms</span>2.5 BA</div>
+                        <div class="unit-detail"><span>Sq Ft</span>1,023</div>
+                    </div>
+                    <div class="unit-rent">Contact for pricing</div>
+                    <a href="inquire.html" class="unit-cta">Inquire &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Unit 5 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="Bagley Vision - Apt 5.png" alt="Unit 5 Floor Plan">
+                </div>
+                <div class="unit-info">
+                    <h3 class="unit-name">Unit 5</h3>
+                    <div class="unit-details">
+                        <div class="unit-detail"><span>Bedrooms</span>1 BD</div>
+                        <div class="unit-detail"><span>Bathrooms</span>1.5 BA</div>
+                        <div class="unit-detail"><span>Sq Ft</span>747</div>
+                    </div>
+                    <div class="unit-rent">Contact for pricing</div>
+                    <a href="inquire.html" class="unit-cta">Inquire &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Unit 6 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="Bagley Vision - Apt 6.png" alt="Unit 6 Floor Plan">
+                </div>
+                <div class="unit-info">
+                    <h3 class="unit-name">Unit 6</h3>
+                    <div class="unit-details">
+                        <div class="unit-detail"><span>Bedrooms</span>1 BD</div>
+                        <div class="unit-detail"><span>Bathrooms</span>1.5 BA</div>
+                        <div class="unit-detail"><span>Sq Ft</span>1,051</div>
+                    </div>
+                    <div class="unit-rent">Contact for pricing</div>
+                    <a href="inquire.html" class="unit-cta">Inquire &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Unit 7 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="Bagley Vision - Apt 7.png" alt="Unit 7 Floor Plan">
+                </div>
+                <div class="unit-info">
+                    <h3 class="unit-name">Unit 7</h3>
+                    <div class="unit-details">
+                        <div class="unit-detail"><span>Bedrooms</span>2 BD</div>
+                        <div class="unit-detail"><span>Bathrooms</span>2.5 BA</div>
+                        <div class="unit-detail"><span>Sq Ft</span>973</div>
+                    </div>
+                    <div class="unit-rent">Contact for pricing</div>
+                    <a href="inquire.html" class="unit-cta">Inquire &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Unit 8 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="Bagley Vision - Apt 8.png" alt="Unit 8 Floor Plan">
+                </div>
+                <div class="unit-info">
+                    <h3 class="unit-name">Unit 8</h3>
+                    <div class="unit-details">
+                        <div class="unit-detail"><span>Bedrooms</span>Jr. 1 BD</div>
+                        <div class="unit-detail"><span>Bathrooms</span>1 BA</div>
+                        <div class="unit-detail"><span>Sq Ft</span>609</div>
+                    </div>
+                    <div class="unit-rent">Contact for pricing</div>
+                    <a href="inquire.html" class="unit-cta">Inquire &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Unit 9 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="Bagley Vision - Apt 9.png" alt="Unit 9 Floor Plan">
+                </div>
+                <div class="unit-info">
+                    <h3 class="unit-name">Unit 9</h3>
+                    <div class="unit-details">
+                        <div class="unit-detail"><span>Bedrooms</span>Jr. 1 BD</div>
+                        <div class="unit-detail"><span>Bathrooms</span>1 BA</div>
+                        <div class="unit-detail"><span>Sq Ft</span>565</div>
+                    </div>
+                    <div class="unit-rent">Contact for pricing</div>
+                    <a href="inquire.html" class="unit-cta">Inquire &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Unit 10 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="Bagley Vision - Apt 10.png" alt="Unit 10 Floor Plan">
+                </div>
+                <div class="unit-info">
+                    <h3 class="unit-name">Unit 10</h3>
+                    <div class="unit-details">
+                        <div class="unit-detail"><span>Bedrooms</span>Jr. 1 BD</div>
+                        <div class="unit-detail"><span>Bathrooms</span>1 BA</div>
+                        <div class="unit-detail"><span>Sq Ft</span>581</div>
+                    </div>
+                    <div class="unit-rent">Contact for pricing</div>
+                    <a href="inquire.html" class="unit-cta">Inquire &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Unit 11 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="Bagley Vision - Apt 11.png" alt="Unit 11 Floor Plan">
+                </div>
+                <div class="unit-info">
+                    <h3 class="unit-name">Unit 11</h3>
+                    <div class="unit-details">
+                        <div class="unit-detail"><span>Bedrooms</span>1 BD</div>
+                        <div class="unit-detail"><span>Bathrooms</span>1.5 BA</div>
+                        <div class="unit-detail"><span>Sq Ft</span>580</div>
+                    </div>
+                    <div class="unit-rent">Contact for pricing</div>
+                    <a href="inquire.html" class="unit-cta">Inquire &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Unit 12 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="Bagley Vision - Apt 12.png" alt="Unit 12 Floor Plan">
+                </div>
+                <div class="unit-info">
+                    <h3 class="unit-name">Unit 12</h3>
+                    <div class="unit-details">
+                        <div class="unit-detail"><span>Bedrooms</span>1 BD</div>
+                        <div class="unit-detail"><span>Bathrooms</span>1.5 BA</div>
+                        <div class="unit-detail"><span>Sq Ft</span>718</div>
+                    </div>
+                    <div class="unit-rent">Contact for pricing</div>
+                    <a href="inquire.html" class="unit-cta">Inquire &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Unit 13 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="Bagley Vision - Apt 13.png" alt="Unit 13 Floor Plan">
+                </div>
+                <div class="unit-info">
+                    <h3 class="unit-name">Unit 13</h3>
+                    <div class="unit-details">
+                        <div class="unit-detail"><span>Bedrooms</span>2 BD</div>
+                        <div class="unit-detail"><span>Bathrooms</span>2.5 BA</div>
+                        <div class="unit-detail"><span>Sq Ft</span>1,021</div>
+                    </div>
+                    <div class="unit-rent">Contact for pricing</div>
+                    <a href="inquire.html" class="unit-cta">Inquire &rarr;</a>
+                </div>
+            </div>
+
+            <!-- Unit 14 -->
+            <div class="unit-card">
+                <div class="unit-image">
+                    <img src="Bagley Vision - Apt 14.png" alt="Unit 14 Floor Plan">
+                </div>
+                <div class="unit-info">
+                    <h3 class="unit-name">Unit 14</h3>
+                    <div class="unit-details">
+                        <div class="unit-detail"><span>Bedrooms</span>2 BD</div>
+                        <div class="unit-detail"><span>Bathrooms</span>2.5 BA</div>
+                        <div class="unit-detail"><span>Sq Ft</span>1,035</div>
+                    </div>
+                    <div class="unit-rent">Contact for pricing</div>
+                    <a href="inquire.html" class="unit-cta">Inquire &rarr;</a>
+                </div>
+            </div>
+
         </div>
     </section>
+
+    <!-- Commercial Divider -->
+    <div class="commercial-divider"><hr></div>
+
+    <!-- Commercial Notice -->
+    <div class="commercial-notice">
+        <h2>Commercial Space Available</h2>
+        <p>10,000 sq ft of modern commercial space available for lease. Flexible sizes and layouts available at the heart of Detroit's innovation corridor. <a href="inquire.html"><strong>Contact Us</strong></a> for detailed information, availability, and pricing!</p>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -711,43 +722,4 @@
                     <a href="#">Privacy Policy</a>
                 </div>
             </div>
-            <div class="footer-copyright">
-                <p>&copy; 2026, Bagley Vision Lofts. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 80); });
-
-        const dropdownToggle = document.getElementById('dropdownToggle');
-        const dropdownMenu = document.getElementById('dropdownMenu');
-        dropdownToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isOpen = dropdownMenu.classList.toggle('open');
-            dropdownToggle.classList.toggle('active', isOpen);
-        });
-        document.addEventListener('click', () => { dropdownMenu.classList.remove('open'); dropdownToggle.classList.remove('active'); });
-        dropdownMenu.addEventListener('click', (e) => e.stopPropagation());
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href.length > 1) { e.preventDefault(); const t = document.querySelector(href); if (t) t.scrollIntoView({ behavior: 'smooth' }); }
-            });
-        });
-
-        document.querySelector('form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your inquiry! We will contact you shortly.');
-            e.target.reset();
-        });
-    </script>
-</body>
-</html>                                                         
+            <div class="footer-copyright
