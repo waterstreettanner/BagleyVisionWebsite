@@ -114,7 +114,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-image" style="width:100%;">
-            Neighborhood Hero Image
+            <img src="Neighborhood Hero Image.jpg" alt="Neighborhood" style="width:100%; height:85vh; object-fit:cover; display:block;">
         </div>
     </section>
 
@@ -130,7 +130,7 @@
     <section class="content-section">
         <div class="detail-block">
             <div class="detail-image">
-                Steps from Innovation Image
+                <img src="Steps from Innovation Image.jpg" alt="Steps from Innovation" style="width:100%; height:100%; object-fit:cover; display:block;">
             </div>
             <div class="detail-text">
                 <h3>Steps from Innovation</h3>
@@ -142,7 +142,7 @@
     <section class="content-section">
         <div class="detail-block reverse">
             <div class="detail-image">
-                Dining &amp; Culture Image
+                <img src="Dining & Culture Image.jpg" alt="Dining & Culture" style="width:100%; height:100%; object-fit:cover; display:block;">
             </div>
             <div class="detail-text">
                 <h3>Dining &amp; Culture</h3>
@@ -154,7 +154,7 @@
     <section class="content-section">
         <div class="detail-block">
             <div class="detail-image">
-                Green Spaces &amp; Parks Image
+                <img src="Green Spaces & Parks.webp" alt="Green Spaces & Parks" style="width:100%; height:100%; object-fit:cover; display:block;">
             </div>
             <div class="detail-text">
                 <h3>Green Spaces &amp; Parks</h3>
@@ -194,9 +194,4 @@
         dropdownMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('active'); dropdownMenu.classList.remove('active'); }); });
         document.addEventListener('click', (e) => { if (!e.target.closest('.nav-right')) { hamburger.classList.remove('active'); dropdownMenu.classList.remove('active'); } });
         const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); });
-        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('fade-in'); observer.unobserve(entry.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
-        document.querySelectorAll('.detail-block').forEach(block => observer.observe(block));
-    </script>
-</body>
-</html>                            
+        window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); 
