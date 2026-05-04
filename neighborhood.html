@@ -12,10 +12,10 @@
         body { font-family: 'Rosario', sans-serif; background-color: #737F69; color: #E8DCC8; line-height: 1.6; overflow-x: hidden; }
 
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; justify-content: space-between; align-items: center; padding: 24px 48px 28px; transition: background 0.3s ease, padding 0.4s ease; }
-        nav.scrolled { background-color: rgba(115, 127, 105, 0.95); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); padding: 12px 48px 14px; }
+        nav.scrolled { background-color: rgba(115, 127, 105, 0.95); box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); padding: 24px 48px 28px; }
         .logo { display: block; text-decoration: none; line-height: 0; }
         .logo img { height: 140px; width: auto; transition: height 0.4s ease; }
-        nav.scrolled .logo img { height: 70px; }
+        nav.scrolled .logo img { height: 140px; }
         .nav-right { display: flex; align-items: center; gap: 2rem; }
         .nav-links { display: none; }
         .nav-links a { color: #E8DCC8; text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease; }
@@ -65,8 +65,8 @@
 
         @media (max-width: 768px) {
             nav { padding: 16px 24px 20px; }
-            nav.scrolled .logo img { height: 55px; }
-            nav.scrolled { padding: 10px 24px 12px; }
+            nav.scrolled .logo img { height: 140px; }
+            nav.scrolled { padding: 16px 24px 20px; }
             .nav-right { gap: 1rem; }
             .dropdown-menu { right: 1.5rem; }
             .hero { height: 60vh; margin-top: 80px; }
@@ -113,10 +113,9 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-image">
+        <div class="hero-image" style="width:100%;">
             Neighborhood Hero Image
         </div>
-        <div class="hero-text">Neighborhood</div>
     </section>
 
     <!-- Main Content -->
@@ -200,4 +199,4 @@
         document.querySelectorAll('.detail-block').forEach(block => observer.observe(block));
     </script>
 </body>
-</html>
+</html>                            
