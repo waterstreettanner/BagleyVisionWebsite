@@ -194,4 +194,9 @@
         dropdownMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('active'); dropdownMenu.classList.remove('active'); }); });
         document.addEventListener('click', (e) => { if (!e.target.closest('.nav-right')) { hamburger.classList.remove('active'); dropdownMenu.classList.remove('active'); } });
         const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => { nav.classList
+        window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); });
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('fade-in'); observer.unobserve(entry.target); } }); }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+        document.querySelectorAll('.detail-block').forEach(block => { observer.observe(block); });
+    </script>
+</body>
+</html>

@@ -722,4 +722,38 @@
                     <a href="#">Privacy Policy</a>
                 </div>
             </div>
-            <div class="footer-copyright
+            <div class="footer-copyright">
+                <p>&copy; 2026, Bagley Vision Lofts. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 80); });
+
+        const dropdownToggle = document.getElementById('dropdownToggle');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        dropdownToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = dropdownMenu.classList.toggle('open');
+            dropdownToggle.classList.toggle('active', isOpen);
+        });
+        document.addEventListener('click', () => { dropdownMenu.classList.remove('open'); dropdownToggle.classList.remove('active'); });
+        dropdownMenu.addEventListener('click', (e) => e.stopPropagation());
+
+        // Staggered fade-in for unit cards
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        document.querySelectorAll('.unit-card').forEach(card => observer.observe(card));
+    </script>
+</body>
+</html>
