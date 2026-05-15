@@ -7,7 +7,7 @@
     <link rel="apple-touch-icon" sizes="192x192" href="favicon-192.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inquire | Bagley Vision Lofts</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rosario:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rosario:wght@400;700&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -407,32 +407,37 @@
             font-family: 'Rosario', sans-serif;
             font-size: 0.85rem;
             color: #FFFFFF;
-            opacity: 0.6;
+            opacity: 0.85;
             line-height: 1.8;
         }
         .footer-left a { color: #FFFFFF; text-decoration: none; }
         .footer-left a:hover { text-decoration: underline; }
-        .footer-right { display: flex; gap: 32px; }
-        .footer-right a {
-            font-family: 'Rosario', sans-serif;
-            font-size: 0.85rem;
-            color: #FFFFFF;
-            opacity: 0.6;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-        .footer-right a:hover { opacity: 1; }
         .footer-copyright {
             margin-top: 40px;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
         }
         .footer-copyright p {
             font-family: 'Rosario', sans-serif;
             font-size: 0.75rem;
             color: #FFFFFF;
-            opacity: 0.35;
+            opacity: 0.4;
         }
+        .footer-links { display: flex; gap: 32px; }
+        .footer-links a {
+            font-family: 'Rosario', sans-serif;
+            font-size: 0.75rem;
+            color: #FFFFFF;
+            opacity: 0.4;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .footer-links a:hover { opacity: 0.7; }
 
         /* ── Animations ── */
         .fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
@@ -610,13 +615,13 @@
                     <p><a href="mailto:info@bagleyvision.com">info@bagleyvision.com</a> | For leasing inquiries, <a href="inquire.html">click here</a></p>
                     <p style="margin-top: 8px;"><a href="#">@bagleyvision</a></p>
                 </div>
-                <div class="footer-right">
-                    <a href="#">Fair Housing Notice</a>
-                    <a href="#">Privacy Policy</a>
-                </div>
             </div>
             <div class="footer-copyright">
                 <p>&copy; 2026, Bagley Vision Lofts. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="fair-housing.html">Fair Housing Notice</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -690,4 +695,4 @@
         }
     </script>
 </body>
-</html>                                                                                             
+</html>                                                                                         

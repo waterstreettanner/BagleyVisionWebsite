@@ -6,7 +6,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
     <link rel="apple-touch-icon" sizes="192x192" href="favicon-192.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - Bagley Vision</title>
+    <title>Gallery | Bagley Vision Lofts</title>
     <link href="https://fonts.googleapis.com/css2?family=Rosario:wght@400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -205,62 +205,35 @@
         /* Hero Section */
         .hero {
             position: relative;
-            background: #FAF8F4;
-            overflow: hidden;
-            padding-top: 120px;
-        }
-
-        .hero-image {
-            width: 82%;
-            height: 85vh;
-            background: linear-gradient(135deg, #E8DCC8 0%, #d4c8b4 50%, #c9bda9 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
+            background: var(--ivory);
+            overflow: visible;
+            padding-top: 180px;
+            padding-bottom: 60px;
+        }
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+        }
+        .hero-content h1 {
+            font-family: 'Rosario', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: var(--main);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .hero-content p {
+            font-family: 'Rosario', sans-serif;
             font-size: 1.2rem;
             color: var(--text);
             opacity: 0.7;
-        }
-
-        .hero-text {
-            position: absolute;
-            right: 60px;
-            top: 220px;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
-            font-family: 'Rosario', sans-serif;
-            font-size: 5.5rem;
-            font-weight: 400;
-            color: var(--text);
-            opacity: 0.25;
-            line-height: 1;
-            letter-spacing: 4px;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        /* Intro Section */
-        .intro {
-            padding: 4rem 3rem;
-            max-width: 1200px;
+            max-width: 600px;
             margin: 0 auto;
-        }
-
-        .intro h1 {
-            font-family: 'Rosario', sans-serif;
-            font-size: 2.8rem;
-            color: #B8846F;
-            margin-bottom: 1.5rem;
-            font-weight: 400;
-        }
-
-        .intro p {
-            font-size: 1.2rem;
-            color: var(--text);
-            max-width: 700px;
             line-height: 1.8;
-            opacity: 0.95;
         }
 
         /* Gallery Grid */
@@ -285,38 +258,16 @@
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             aspect-ratio: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             border: 1px solid rgba(44, 44, 44, 0.08);
         }
 
-        .gallery-item:nth-child(1) {
-            grid-column: span 2;
-            grid-row: span 2;
-            background: linear-gradient(135deg, #E8DCC8 0%, #d4c8b4 100%);
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
-        .gallery-item:nth-child(3) {
-            grid-row: span 2;
-            background: linear-gradient(135deg, #d4c8b4 0%, #c9bda9 100%);
-        }
-
-        .gallery-item:nth-child(5) {
-            grid-column: span 2;
-            background: linear-gradient(135deg, #E8DCC8 0%, #d4c8b4 100%);
-        }
-
-        .gallery-item:nth-child(7) {
-            grid-row: span 2;
-            background: linear-gradient(135deg, #E8DCC8 0%, #d4c8b4 100%);
-        }
-
-        .gallery-item:nth-child(9) {
-            grid-column: span 2;
-            grid-row: span 2;
-            background: linear-gradient(135deg, #d4c8b4 0%, #c9bda9 100%);
-        }
 
         .gallery-item:hover {
             transform: scale(1.03);
@@ -324,7 +275,7 @@
         }
 
         .gallery-label {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Rosario', sans-serif;
             font-size: 1rem;
             color: var(--text);
             text-align: center;
@@ -344,28 +295,6 @@
                 grid-template-columns: repeat(3, 1fr);
                 gap: 1.5rem;
             }
-
-            .gallery-item:nth-child(1) {
-                grid-column: span 2;
-                grid-row: span 1;
-            }
-
-            .gallery-item:nth-child(3) {
-                grid-row: span 1;
-            }
-
-            .gallery-item:nth-child(5) {
-                grid-column: span 1;
-            }
-
-            .gallery-item:nth-child(7) {
-                grid-row: span 1;
-            }
-
-            .gallery-item:nth-child(9) {
-                grid-column: span 2;
-                grid-row: span 1;
-            }
         }
 
         @media (max-width: 768px) {
@@ -374,37 +303,8 @@
                 gap: 1rem;
             }
 
-            .gallery-item {
-                aspect-ratio: auto;
-                min-height: 200px;
-            }
-
-            .gallery-item:nth-child(1),
-            .gallery-item:nth-child(5),
-            .gallery-item:nth-child(9) {
-                grid-column: span 1;
-            }
-
-            .gallery-item:nth-child(1),
-            .gallery-item:nth-child(3),
-            .gallery-item:nth-child(7),
-            .gallery-item:nth-child(9) {
-                grid-row: span 1;
-            }
-
-            .intro h1 {
-                font-size: 2rem;
-            }
-
-            .hero {
-                height: 60vh;
-                margin-top: 80px;
-            }
-
-            .hero-text {
-                font-size: 4rem;
-                right: 1rem;
-            }
+            .hero { padding-top: 120px; padding-bottom: 40px; }
+            .hero-content h1 { font-size: 2rem; }
         }
 
         /* Lightbox */
@@ -430,13 +330,12 @@
 
         .lightbox-content {
             position: relative;
-            background-color: #0f0f0f;
-            border: 2px solid var(--main);
+            background-color: transparent;
             padding: 2rem;
             border-radius: 4px;
             text-align: center;
-            max-width: 80vw;
-            max-height: 80vh;
+            max-width: 90vw;
+            max-height: 90vh;
             animation: scaleIn 0.3s ease;
         }
 
@@ -449,27 +348,6 @@
                 transform: scale(1);
                 opacity: 1;
             }
-        }
-
-        .lightbox-image {
-            width: 100%;
-            height: 500px;
-            background: linear-gradient(135deg, #E8DCC8 0%, #d4c8b4 100%);
-            border-radius: 2px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--text);
-            font-weight: 400;
-            margin-bottom: 1.5rem;
-        }
-
-        .lightbox-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            color: var(--main);
-            margin-bottom: 1rem;
         }
 
         .lightbox-close {
@@ -496,14 +374,14 @@
         .footer-name .the { display: block; font-size: 1.2rem; letter-spacing: 6px; text-transform: uppercase; color: #FFFFFF; margin-bottom: 4px; }
         .footer-name .main-name { font-size: clamp(3rem, 8vw, 7rem); color: #FFFFFF; letter-spacing: 2px; text-transform: uppercase; line-height: 1; }
         .footer-info { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 32px; flex-wrap: wrap; gap: 24px; }
-        .footer-left p { font-family: 'Rosario', sans-serif; font-size: 0.85rem; color: #FFFFFF; opacity: 0.6; line-height: 1.8; }
+        .footer-left p { font-family: 'Rosario', sans-serif; font-size: 0.85rem; color: #FFFFFF; opacity: 0.85; line-height: 1.8; }
         .footer-left a { color: #FFFFFF; text-decoration: none; }
         .footer-left a:hover { text-decoration: underline; }
-        .footer-right { display: flex; gap: 32px; }
-        .footer-right a { font-family: 'Rosario', sans-serif; font-size: 0.85rem; color: #FFFFFF; opacity: 0.6; text-decoration: none; transition: opacity 0.3s; }
-        .footer-right a:hover { opacity: 1; }
-        .footer-copyright { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
-        .footer-copyright p { font-family: 'Rosario', sans-serif; font-size: 0.75rem; color: #FFFFFF; opacity: 0.35; }
+        .footer-copyright { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+        .footer-copyright p { font-family: 'Rosario', sans-serif; font-size: 0.75rem; color: #FFFFFF; opacity: 0.4; }
+        .footer-links { display: flex; gap: 32px; }
+        .footer-links a { font-family: 'Rosario', sans-serif; font-size: 0.75rem; color: #FFFFFF; opacity: 0.4; text-decoration: none; transition: opacity 0.3s; }
+        .footer-links a:hover { opacity: 0.7; }
 
         /* Scroll animation */
         .scroll-fade {
@@ -539,57 +417,116 @@
                 <a href="residences.html">Lofts</a>
                 <a href="urban-oasis.html">Urban Oasis</a>
                 <a href="neighborhood.html">Neighborhood</a>
-                <a href="availability.html">Floorplans</a>
                 <div class="divider"></div>
+                <a href="availability.html">Floorplans</a>
                 <a href="gallery.html">Gallery</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
-        <div class="hero-image" style="width:100%;">
-            Gallery Hero Image
+        <div class="hero-content">
+            <h1>Gallery</h1>
+            <p>Explore a collection of imagery and renderings that reflect the building's transformative journey, capturing the spirit of Bagley Vision and the enduring energy of Corktown.</p>
         </div>
     </section>
 
-    <!-- Intro Section -->
-    <section class="intro scroll-fade">
-        <p>Explore a collection of imagery and renderings that reflect the building's restored character and modern evolution, capturing the spirit of Bagley Vision and the enduring energy of Corktown.</p>
+    <!-- Before Photos Section -->
+    <section class="gallery-section">
+        <h2 style="font-family: 'Rosario', sans-serif; font-size: 1.8rem; font-weight: 400; color: var(--main); letter-spacing: 2px; text-transform: uppercase;">As We Found It</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="16-2150 Bagley-16.jpg" alt="2150 Bagley Interior">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="21-2150 Bagley-21.jpg" alt="2150 Bagley Interior">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="22-2150 Bagley-22.jpg" alt="2150 Bagley Interior">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="24-2150 Bagley-24.jpg" alt="2150 Bagley Interior">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="29-2150 Bagley-29.jpg" alt="2150 Bagley Interior">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="32-2150 Bagley-32.jpg" alt="2150 Bagley Interior">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="37-2150 Bagley-37.jpg" alt="2150 Bagley Interior">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="_DCZ0027-Enhanced-NR.jpg" alt="2150 Bagley">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="_DCZ0061-Enhanced-NR.jpg" alt="2150 Bagley">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="_DCZ0113-Enhanced-NR.jpg" alt="2150 Bagley">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="_DCZ0134-Enhanced-NR-4.jpg" alt="2150 Bagley">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="_DCZ0193-Enhanced-NR.jpg" alt="2150 Bagley">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="_DCZ0213-Enhanced-NR.jpg" alt="2150 Bagley">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="_DCZ0243-Enhanced-NR.jpg" alt="2150 Bagley">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="_DCZ0341-Enhanced-NR.jpg" alt="2150 Bagley">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="_DCZ0360-Enhanced-NR.jpg" alt="2150 Bagley">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="_DCZ0415-Enhanced-NR.jpg" alt="2150 Bagley">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="_DCZ0441-Enhanced-NR.jpg" alt="2150 Bagley">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="_DCZ9955-Enhanced-NR.jpg" alt="2150 Bagley">
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="_DCZ9957-Enhanced-NR.jpg" alt="2150 Bagley">
+            </div>
+        </div>
+        <p style="font-family: 'Rosario', sans-serif; font-size: 0.85rem; color: var(--text); opacity: 0.5; margin-top: 16px; text-align: right;">Photos by @dmchristiansen and Skyview Experts</p>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- Renderings Section -->
     <section class="gallery-section">
+        <h2 style="font-family: 'Rosario', sans-serif; font-size: 1.8rem; font-weight: 400; color: var(--main); letter-spacing: 2px; text-transform: uppercase;">Its Next Chapter</h2>
         <div class="gallery-grid">
-            <div class="gallery-item" onclick="openLightbox('Exterior 1')">
-                <span class="gallery-label">[ Exterior 1 ]</span>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="Bagley New Hero Image.jpg" alt="Bagley Vision Exterior Rendering" style="object-position: 60% center;">
             </div>
-            <div class="gallery-item" onclick="openLightbox('Interior — Living Room')">
-                <span class="gallery-label">[ Interior — Living Room ]</span>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="Urban Oasis 1.png" alt="Urban Oasis Rendering">
             </div>
-            <div class="gallery-item" onclick="openLightbox('Urban Oasis')">
-                <span class="gallery-label">[ Urban Oasis ]</span>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="Urban Oasis 2.png" alt="Urban Oasis Rendering">
             </div>
-            <div class="gallery-item" onclick="openLightbox('Corktown Streetscape')">
-                <span class="gallery-label">[ Corktown Streetscape ]</span>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="Residential Lobby.jpg" alt="Residential Lobby Rendering" style="object-position: 40% center;">
             </div>
-            <div class="gallery-item" onclick="openLightbox('Rooftop Views')">
-                <span class="gallery-label">[ Rooftop Views ]</span>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="Bagley Vision Kitchen and Living Room.png" alt="Kitchen and Living Room Rendering" style="object-position: 60% center;">
             </div>
-            <div class="gallery-item" onclick="openLightbox('Interior — Kitchen')">
-                <span class="gallery-label">[ Interior — Kitchen ]</span>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="Bagley Vision Bedroom.png" alt="Bedroom Rendering" style="object-position: 55% center;">
             </div>
-            <div class="gallery-item" onclick="openLightbox('Exterior 2 — Night')">
-                <span class="gallery-label">[ Exterior 2 — Night ]</span>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="Bagley Vision Bathroom_Updated.png" alt="Bathroom Rendering">
             </div>
-            <div class="gallery-item" onclick="openLightbox('Grand Lobby')">
-                <span class="gallery-label">[ Grand Lobby ]</span>
-            </div>
-            <div class="gallery-item" onclick="openLightbox('Community Spaces')">
-                <span class="gallery-label">[ Community Spaces ]</span>
-            </div>
-            <div class="gallery-item" onclick="openLightbox('Restoration Detail')">
-                <span class="gallery-label">[ Restoration Detail ]</span>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="Residential Hallway.png" alt="Residential Hallway Rendering">
             </div>
         </div>
     </section>
@@ -598,9 +535,7 @@
     <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
         <div class="lightbox-content" onclick="event.stopPropagation()">
             <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-            <div class="lightbox-image" id="lightboxImage">Image</div>
-            <h2 class="lightbox-title" id="lightboxTitle">Title</h2>
-            <p style="color: var(--selective); margin-bottom: 1.5rem;">High-resolution imagery available upon request</p>
+            <img id="lightboxImage" src="" alt="" style="max-width: 100%; max-height: 75vh; object-fit: contain; border-radius: 2px;">
         </div>
     </div>
 
@@ -617,13 +552,13 @@
                     <p><a href="mailto:info@bagleyvision.com">info@bagleyvision.com</a> | For leasing inquiries, <a href="inquire.html">click here</a></p>
                     <p style="margin-top: 8px;"><a href="#">@bagleyvision</a></p>
                 </div>
-                <div class="footer-right">
-                    <a href="#">Fair Housing Notice</a>
-                    <a href="#">Privacy Policy</a>
-                </div>
             </div>
             <div class="footer-copyright">
                 <p>&copy; 2026, Bagley Vision Lofts. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="fair-housing.html">Fair Housing Notice</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                </div>
             </div>
         </div>
     </footer>
@@ -656,31 +591,16 @@
         });
 
         // Lightbox functionality
-        function openLightbox(title) {
+        function openLightbox(el) {
+            const img = el.querySelector('img');
+            if (!img) return;
             const lightbox = document.getElementById('lightbox');
-            const lightboxTitle = document.getElementById('lightboxTitle');
             const lightboxImage = document.getElementById('lightboxImage');
-            lightboxTitle.textContent = title;
-            lightboxImage.textContent = title;
+            lightboxImage.src = img.src;
+            lightboxImage.alt = img.alt;
             lightbox.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox(event) {
-            if (event && event.target !== document.getElementById('lightbox')) {
-                return;
-            }
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        // Close lightbox on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
-        });
-    </script>
-</body>
-</html>                                                                                                                          
+         

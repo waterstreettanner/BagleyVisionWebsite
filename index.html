@@ -324,20 +324,15 @@
         }
         .footer-left a { color: var(--white); text-decoration: none; }
         .footer-left a:hover { text-decoration: underline; }
-        .footer-right { display: flex; gap: 32px; }
-        .footer-right a {
-            font-family: 'Rosario', sans-serif;
-            font-size: 0.85rem;
-            color: var(--white);
-            opacity: 0.7;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-        .footer-right a:hover { opacity: 1; }
         .footer-copyright {
             margin-top: 40px;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
         }
         .footer-copyright p {
             font-family: 'Rosario', sans-serif;
@@ -345,6 +340,16 @@
             color: var(--white);
             opacity: 0.4;
         }
+        .footer-links { display: flex; gap: 32px; }
+        .footer-links a {
+            font-family: 'Rosario', sans-serif;
+            font-size: 0.75rem;
+            color: var(--white);
+            opacity: 0.4;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        .footer-links a:hover { opacity: 0.7; }
 
         /* ── Animations ── */
         .fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
@@ -449,7 +454,7 @@
         </div>
         <div class="content-text fade-in-left">
             <h3>Lofts</h3>
-            <p>Each residence is shaped by the building's original architecture — designed to draw in natural light, provide expansive space, reveal historic details, and create a sense of quiet, understated sophistication.</p>
+            <p>Each residence is shaped by the building's original architecture - designed to draw in natural light, provide expansive space, reveal historic details, and create a sense of quiet, understated sophistication.</p>
             <a href="residences.html" class="view-more">View More</a>
         </div>
     </section>
@@ -481,14 +486,16 @@
     <!-- ═══════════ GALLERY ═══════════ -->
     <section class="content-block" id="gallery">
         <div class="content-image fade-in-left">
-            <div class="image-placeholder">[ Gallery Image ]</div>
+            <img src="01-2150 Bagley-1-cropped.jpg" alt="Gallery" style="width:100%; height:100%; object-fit:cover; display:block;">
         </div>
         <div class="content-text fade-in-right">
             <h3>Gallery</h3>
-            <p>Explore a collection of imagery and renderings that reflect the building's restored character and modern evolution, capturing the spirit of Bagley Vision and the enduring energy of Corktown.</p>
+            <p>Explore a collection of imagery and renderings that reflect the building's transformative journey, capturing the spirit of Bagley Vision and the enduring energy of Corktown.</p>
             <a href="gallery.html" class="view-more">View More</a>
         </div>
     </section>
+
+    <div style="height: 120px;"></div>
 
     <!-- Footer -->
     <footer id="inquire">
@@ -503,13 +510,13 @@
                     <p><a href="mailto:info@bagleyvision.com">info@bagleyvision.com</a> | For leasing inquiries, <a href="inquire.html">click here</a></p>
                     <p style="margin-top: 8px;"><a href="#">@bagleyvision</a></p>
                 </div>
-                <div class="footer-right">
-                    <a href="#">Fair Housing Notice</a>
-                    <a href="#">Privacy Policy</a>
-                </div>
             </div>
             <div class="footer-copyright">
                 <p>&copy; 2026, Bagley Vision Lofts. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="fair-housing.html">Fair Housing Notice</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                </div>
             </div>
         </div>
     </footer>
