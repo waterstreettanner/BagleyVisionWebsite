@@ -121,6 +121,9 @@
             flex-direction: column;
             cursor: pointer;
             gap: 6px;
+            background: none;
+            border: none;
+            padding: 0;
         }
 
         .hamburger span {
@@ -298,6 +301,15 @@
         }
 
         @media (max-width: 768px) {
+            .gallery-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .gallery-section h2 {
+                text-align: center;
+                font-size: 1.35rem !important;
+            }
+
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
@@ -305,6 +317,8 @@
 
             .hero { padding-top: 120px; padding-bottom: 40px; }
             .hero-content h1 { font-size: 2rem; }
+            .hero-content p { padding: 0 1rem; }
+            .footer-bottom { padding: 40px 24px 30px; }
         }
 
         /* Lightbox */
@@ -417,7 +431,6 @@
                 <a href="residences.html">Lofts</a>
                 <a href="urban-oasis.html">Urban Oasis</a>
                 <a href="neighborhood.html">Neighborhood</a>
-                <div class="divider"></div>
                 <a href="availability.html">Floorplans</a>
                 <a href="gallery.html">Gallery</a>
             </div>
