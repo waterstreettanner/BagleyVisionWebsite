@@ -39,9 +39,8 @@
         /* Navigation */
         nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
             display: flex;
             justify-content: flex-end;
             align-items: center;
@@ -49,17 +48,14 @@
             padding: 15px 48px;
             background: rgba(250, 248, 244, 0.95);
             backdrop-filter: blur(10px);
-            z-index: 1000;
         }
-
         nav.scrolled {
             background: rgba(250, 248, 244, 0.95);
             backdrop-filter: blur(10px);
             height: 120px;
             padding: 15px 48px;
         }
-
-        .logo {
+        .nav-logo {
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -67,74 +63,93 @@
             text-decoration: none;
             line-height: 0;
         }
-        .logo img {
+        .nav-logo img {
             height: 90px;
             width: auto;
             transition: height 0.4s ease;
         }
-
-        nav.scrolled .logo img {
-            height: 90px;
-        }
-
+        nav.scrolled .nav-logo img { height: 90px; }
         .nav-right {
             display: flex;
             align-items: center;
-            gap: 3rem;
+            gap: 32px;
         }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
+        .nav-right > a {
+            font-family: 'Rosario', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 400;
             color: #99795F;
             text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
-            position: relative;
+            letter-spacing: 0.5px;
+            transition: opacity 0.3s;
         }
-
-        .nav-links a:hover {
+        .nav-right > a:hover { opacity: 0.7; }
+        .nav-dropdown { position: relative; }
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            background: none;
+            border: none;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 1.5px;
+            background: #99795F;
+            transition: 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 16px);
+            right: 0;
+            background: var(--white);
+            border: 1px solid rgba(44, 44, 44, 0.1);
+            min-width: 220px;
+            padding: 12px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px);
+            transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        }
+        .dropdown-menu.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 14px 32px;
+            font-family: 'Rosario', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 400;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .dropdown-menu a:hover {
+            background: rgba(184, 132, 111, 0.08);
             color: var(--main);
         }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--main);
-            transition: width 0.3s ease;
+        .dropdown-divider {
+            height: 1px;
+            background: rgba(44, 44, 44, 0.08);
+            margin: 6px 0;
         }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .hamburger { display: flex; flex-direction: column; gap: 0.4rem; cursor: pointer; background: none; border: none; padding: 0; }
-        .hamburger span { width: 24px; height: 2px; background-color: #99795F; transition: all 0.3s ease; }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
-        .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
-        .dropdown-menu { position: absolute; top: 100%; right: 3rem; background-color: #FFFFFF; border: 1px solid rgba(44, 44, 44, 0.1); border-top: none; min-width: 200px; display: none; flex-direction: column; gap: 0; margin-top: 0; }
-        .dropdown-menu.active { display: flex; }
-        .dropdown-menu a { color: #2C2C2C; text-decoration: none; padding: 1rem 1.5rem; border-bottom: 1px solid rgba(44, 44, 44, 0.08); transition: background-color 0.2s ease, color 0.2s ease; font-size: 0.95rem; }
-        .dropdown-menu a:last-child { border-bottom: none; }
-        .dropdown-menu a:hover { background-color: rgba(184, 132, 111, 0.08); color: #B8846F; }
 
         @media (max-width: 768px) {
             nav { height: 80px; padding: 10px 24px; background: rgba(250, 248, 244, 0.95); }
-            nav.scrolled .logo img { height: 60px; }
+            .nav-logo img { height: 60px; }
+            nav.scrolled .nav-logo img { height: 60px; }
             nav.scrolled { height: 80px; padding: 10px 24px; }
-            .logo img { height: 60px; }
-            .nav-links { display: none; }
-            .nav-right { gap: 1rem; }
-            .dropdown-menu { right: 1.5rem; }
+            .nav-right > a { display: none; }
+            .dropdown-menu { right: -12px; min-width: 200px; }
         }
 
         /* Hero Section */
@@ -344,28 +359,27 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav id="nav">
-        <a href="index.html" class="logo">
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">
             <img src="logo.png" alt="Bagley Vision Lofts">
         </a>
         <div class="nav-right">
-            <div class="nav-links" id="navLinks">
-                <a href="availability.html">Floorplans</a>
-                <a href="inquire.html">Inquire</a>
-            </div>
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <div class="dropdown-menu" id="dropdownMenu">
-                <a href="building.html">Building</a>
-                <a href="residences.html">Lofts</a>
-                <a href="urban-oasis.html">Urban Oasis</a>
-                <a href="neighborhood.html">Neighborhood</a>
-                <a href="availability.html">Floorplans</a>
-                <a href="gallery.html">Gallery</a>
-                <a href="inquire.html">Inquire</a>
+            <a href="availability.html">Floorplans</a>
+            <a href="inquire.html">Inquire</a>
+            <div class="nav-dropdown">
+                <button class="hamburger" id="dropdownToggle" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <a href="building.html">Building</a>
+                    <a href="residences.html">Lofts</a>
+                    <a href="urban-oasis.html">Urban Oasis</a>
+                    <a href="neighborhood.html">Neighborhood</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="availability.html">Floorplans</a>
+                    <a href="gallery.html">Gallery</a>
+                    <a href="inquire.html">Inquire</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -510,14 +524,18 @@
     </footer>
 
     <script>
-        const hamburger = document.getElementById('hamburger');
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 80); });
+
+        const dropdownToggle = document.getElementById('dropdownToggle');
         const dropdownMenu = document.getElementById('dropdownMenu');
-        hamburger.addEventListener('click', (e) => { e.stopPropagation(); hamburger.classList.toggle('active'); dropdownMenu.classList.toggle('active'); });
-        dropdownMenu.addEventListener('click', (e) => { e.stopPropagation(); });
-        dropdownMenu.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('active'); dropdownMenu.classList.remove('active'); }); });
-        document.addEventListener('click', () => { hamburger.classList.remove('active'); dropdownMenu.classList.remove('active'); });
-        const nav = document.getElementById('nav');
-        window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); });
+        dropdownToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = dropdownMenu.classList.toggle('open');
+            dropdownToggle.classList.toggle('active', isOpen);
+        });
+        document.addEventListener('click', () => { dropdownMenu.classList.remove('open'); dropdownToggle.classList.remove('active'); });
+        dropdownMenu.addEventListener('click', (e) => e.stopPropagation());
 
         // Scroll fade animation
         const observerOptions = {
